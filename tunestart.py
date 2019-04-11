@@ -1,7 +1,8 @@
 import string
 import math
-
-songline = input("Type in a line of lyrics to your song! Please split up your song ly rics by syll a ble, like this.")
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+songline = input("Type in a line of lyrics to your song! Please split up your song ly rics by syll a ble, like this: ")
 
 def linesplit(line):
     words = str(line).split()
@@ -27,4 +28,22 @@ def syllable(word):
         wordparts.append('''Segments of a string of character count div''')
     return wordparts
 
-print(linesplit(songline))
+#print(linesplit(songline))
+
+def sentiment(songline):
+    analyzer = SentimentIntensityAnalyzer()
+    sent_scores = analyzer.polarity_scores(songline)
+    return sent_scores
+
+def det_mode(scores):
+    if scores['pos'] > scores['neg']:
+        print('Major')
+    if scores['neg'] > scores['pos']:
+        print('Minor')
+
+def main():
+    lyric = songline
+    sent_analysis = sentiment(songline)
+    det_mode(sent_analysis)
+
+main()
