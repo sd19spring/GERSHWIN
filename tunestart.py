@@ -36,7 +36,7 @@ def sentiment(songline):
     return sent_scores
 
 def det_mode(scores):
-    if scores['pos'] => scores['neg']:
+    if scores['pos'] >= scores['neg']:
         print('Major')
     if scores['neg'] > scores['pos']:
         print('Minor')

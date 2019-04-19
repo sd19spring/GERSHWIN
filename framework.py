@@ -5,7 +5,7 @@ from sys import exit
 """
 DEFINING SCREEN SIZE
 """
-s_width = 1000
+s_width = 1600
 s_height = 800
 size = [s_width, s_height]
 
@@ -24,11 +24,34 @@ darkblue = (25, 50, 150)
 DEFINING FONTS
 """
 pygame.font.init()
-font = 'tlwgtypewriter'
-bigfont = pygame.font.SysFont(font, 40)
+font = 'ubuntu'
+bigfont = pygame.font.SysFont(font, 100)
 myfont = pygame.font.SysFont(font, 18)
-smallfont = pygame.font.SysFont(font, 15)
-medfont = pygame.font.SysFont(font, 25)
+smallfont = pygame.font.SysFont(font, 18)
+medfont = pygame.font.SysFont(font, 23)
+
+'''
+GENRE
+'''
+g_list = ["J A Z Z", "R & B", "P O P", "R O C K", "R A N D O M"]
+
+'''
+AESTHETIC EXTRAS
+'''
+def make_geo(x,y,width,height):
+    points = []
+    points.append((x,y-(2/3)*height))
+    points.append((x+width,y-(2/3.0) * height))
+    points.append((x + width/2.0,y-height)) # top of roof
+    points.append((x,y-(2/3)*height))
+
+    return points
+
+print(make_geo(500, 500, 100, 100))
+
+def draw_geo(x,y,width,height,screen):
+    pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 2)
+
 
 def check_quit(events):
     """Monitors events to check if an attempt to quit has been made
@@ -83,8 +106,8 @@ class Scene():
     def SwitchToScene(self, next_scene):
         self.next = next_scene
 
-    def terminate(self):
-        self.switchToScene(None)
+    def Terminate(self):
+        self.SwitchToScene(None)
 
 class Title(Scene):
     def __init__(self):
@@ -102,11 +125,48 @@ class Title(Scene):
     def Render(self, screen):
 
         #create black screen
-        screen.fill(black)
+        screen.fill(darkblue)
 
         #creating title
         title = bigfont.render('G E R S H W I N', True, white)
-        screen.blit(title,(s_width/2-100, s_height/2))
+        text_rect = title.get_rect(center=(s_width/2, s_height/10))
+        screen.blit(title,text_rect)
+
+        #create line
+        pygame.draw.line(screen,white, (300, s_height/5), (s_width-300, s_height/5), 2)
+
+        #description text
+        desc = medfont.render('r a n d o m   t u n e   g e n e r a t o r   w i t h   l y r i c a l   i n p u t', True, white)
+        desc_rect = desc.get_rect(center=(s_width/2, s_height/4))
+        screen.blit(desc,desc_rect)
+
+        #step 1
+        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
+        step1 = smallfont.render('S T E P  1 : i n p u t  a  l y r i c', True, white)
+        screen.blit(step1,(300,s_height/2.8))
+
+        #step 2
+        ran = list(range(300, s_width-300, 212))
+        for i in ran:
+            pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
+        for x in range(0,len(g_list)):
+            genre = medfont.render(g_list[x], True, white)
+            genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
+            screen.blit(genre,genre_rect)
+
+        step2 = smallfont.render('S T E P  2 : c h o o s e  a  g e n r e', True, white)
+        screen.blit(step2,(300, s_height/1.9))
+
+        #step 3
+        pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
+        step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, white)
+        s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
+        screen.blit(step3,s3_rect)
+
+        #geometric points
+        draw_geo(50,850,200,250,screen)
+        draw_geo(s_width-250,850,200,250,screen)
+
 
 class Output(Scene):
     def __init__(self):
@@ -124,11 +184,14 @@ class Output(Scene):
     def Render(self, screen):
 
         #create black screen
-        screen.fill(blue)
+        screen.fill(darkgreen)
 
         #creating title
         title = bigfont.render('O U T P UT  S O N G', True, white)
-        screen.blit(title,(s_width/2-100, s_height/2))
+        text_rect = title.get_rect(center=(s_width/2, s_height/4))
+        screen.blit(title,text_rect)
+
+
 
 class Button():
     # To be removed from the scene, we've got to know which scene we're in
