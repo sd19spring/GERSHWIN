@@ -47,8 +47,6 @@ def make_geo(x,y,width,height):
 
     return points
 
-print(make_geo(500, 500, 100, 100))
-
 def draw_geo(x,y,width,height,screen):
     pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 2)
 
@@ -198,7 +196,7 @@ class Button():
     # To blit our image, we have to know the image, size, and coords
     #   (but we can default coords to (0,0) to make it easy)
     # To give the user a message, we need to know the message
-    def __init__(self, imgname, size, message=None, coords=(500,520)):
+    def __init__(self, imgname, size, coords=(500,520)):
         self.coords = coords
         self.imgname = imgname
         self.size = size
@@ -209,7 +207,7 @@ class Button():
         self.x = coords[0]
         self.y = coords[1]
 
-    def check_click(self):
+    def check_clicked(self, events):
         """
         Checks if the mouse was clicked on this Button, and if so, calls
         its clickedAction()
@@ -220,7 +218,9 @@ class Button():
         ysize = self.ysize
         (a, b) = pygame.mouse.get_pos()
         if a>x and b>y and a<x+xsize and b<y+ysize:
-            self.clickedAction()
+            for event in events:
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    self.clickedAction()
             return True
         return False
 
@@ -229,7 +229,7 @@ class Button():
 
     def clickedAction(self):
         """This is a default click action so we know that the method works"""
-        print("Button {} clicked!".format(self.imgname))
+        print("The {} button was clicked!".format(self.imgname))
 
 
 class Game:
@@ -237,7 +237,14 @@ class Game:
     scene = None
 
 
-
+"""Create buttons for each genre, and to generate the song."""
+   #TODO: Change the clicked action according to button.
+jazz = Button('Jazz', (150, 70), coords=(300,450))
+rb = Button('R&B', (150, 70), coords=(512,450))
+pop = Button('Pop', (150, 70), coords=(724,450))
+rock = Button('Rock', (150, 70), coords=(936,450))
+random = Button('Random Genre', (150, 70), coords=(1148,450))
+generate = Button('Generate Music', (300, 70), coords=(650,610))
 #------------------------------------------------------------------#
 
 
@@ -247,7 +254,6 @@ def main(fps, starting_scene):
     #initializing screen
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("GERSHWIN")
-
     #looping until close button is clicked
     done = False
 
@@ -284,6 +290,12 @@ def main(fps, starting_scene):
         active_scene.ProcessInput(filtered_events, pressed_keys)
         active_scene.Update()
         active_scene.Render(screen)
+        jazz.check_clicked(filtered_events)
+        rb.check_clicked(filtered_events)
+        pop.check_clicked(filtered_events)
+        rock.check_clicked(filtered_events)
+        random.check_clicked(filtered_events)
+        generate.check_clicked(filtered_events)
 
         active_scene = active_scene.next
 
