@@ -23,8 +23,22 @@ for word_entry in pronnunciation_dict:
             count += 1
     words[word_list[0]] = count
 
-#write a function that allows you to imput a word and the syllable count is output
 def syllable_count(word):
+    """
+    this function allows you to input a word and the syllable count is the output
+    """
     return words[word.upper()]
 
-print(syllable_count("hello"))
+ def phrase_syllables(phrase):
+    """
+    this function allows you to imput phrases
+    """
+     phrase = phrase.upper
+
+#take phrase and remove punctuation, make all upper
+#break phrase into words
+#take words and count syllables
+#add syllabe count to get phrase count
+
+
+print(syllable_count("software"))

@@ -50,6 +50,7 @@ def make_geo(x,y,width,height):
 def draw_geo(x,y,width,height,screen):
     pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 2)
 
+#-----------------------------------------
 
 def check_quit(events):
     """Monitors events to check if an attempt to quit has been made
@@ -83,6 +84,9 @@ def check_click(scene, events):
                     break
 
 class Scene():
+    """
+    initiating generic Scene class
+    """
     def __init__(self):
         self.next = self
         self.Buttons= []
@@ -108,6 +112,9 @@ class Scene():
         self.SwitchToScene(None)
 
 class Title(Scene):
+    '''
+    Creating Scene subclass for input title scene
+    '''
     def __init__(self):
         Scene.__init__(self)
 
@@ -167,6 +174,9 @@ class Title(Scene):
 
 
 class Output(Scene):
+    '''
+    Creating Scene subclass for output scene
+    '''
     def __init__(self):
         Scene.__init__(self)
 
@@ -192,10 +202,11 @@ class Output(Scene):
 
 
 class Button():
-    # To be removed from the scene, we've got to know which scene we're in
-    # To blit our image, we have to know the image, size, and coords
-    #   (but we can default coords to (0,0) to make it easy)
-    # To give the user a message, we need to know the message
+    '''
+    initiating Button class
+
+    - used for genres, back button, generate button, save button
+    '''
     def __init__(self, imgname, size, coords=(500,520)):
         self.coords = coords
         self.imgname = imgname
