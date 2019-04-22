@@ -20,6 +20,7 @@ blue = (0,0,255)
 darkred = (178, 34, 34)
 darkgreen = (25, 100, 50)
 darkblue = (25, 50, 150)
+grey = (128, 128, 128)
 """
 DEFINING FONTS
 """
@@ -48,8 +49,15 @@ def make_geo(x,y,width,height):
     return points
 
 def draw_geo(x,y,width,height,screen):
-    pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 2)
+    pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 5)
 
+def make_shapes(screen):
+    draw_geo(50,900,200,250,screen)
+    draw_geo(s_width-250,900,200,250,screen)
+    draw_geo(50,350,200,250,screen)
+    draw_geo(s_width-250,350,200,250,screen)
+    draw_geo(50,600,200,250,screen)
+    draw_geo(s_width-250,600,200,250,screen)
 #-----------------------------------------
 
 def check_quit(events):
@@ -145,33 +153,42 @@ class Title(Scene):
         desc_rect = desc.get_rect(center=(s_width/2, s_height/4))
         screen.blit(desc,desc_rect)
 
+        (a, b) = pygame.mouse.get_pos()
         #step 1
-        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
+        if a > 300 and a < 1300 and b > (s_height/2.5) and b < (s_height/2.5)+60:
+            pygame.draw.rect(screen,grey,[300, s_height/2.5,1000,60],3)
+        else:
+            pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
         step1 = smallfont.render('S T E P  1 : i n p u t  a  l y r i c', True, white)
         screen.blit(step1,(300,s_height/2.8))
 
         #step 2
         ran = list(range(300, s_width-300, 212))
         for i in ran:
-            pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
+            if a>i and a<i+150 and b>(s_height/1.75) and b < (s_height/1.75)+60:
+                pygame.draw.rect(screen,grey,[i, s_height/1.75, 150, 60],0)
+            else:
+                pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
+
         for x in range(0,len(g_list)):
-            genre = medfont.render(g_list[x], True, white)
-            genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
-            screen.blit(genre,genre_rect)
+                genre = medfont.render(g_list[x], True, white)
+                genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
+                screen.blit(genre,genre_rect)
 
         step2 = smallfont.render('S T E P  2 : c h o o s e  a  g e n r e', True, white)
         screen.blit(step2,(300, s_height/1.9))
 
         #step 3
-        pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
+        if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
+            pygame.draw.rect(screen,grey,[650, s_height/1.3,300,60],0)
+        else:
+            pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
         step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, white)
         s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
         screen.blit(step3,s3_rect)
 
         #geometric points
-        draw_geo(50,850,200,250,screen)
-        draw_geo(s_width-250,850,200,250,screen)
-
+        make_shapes(screen)
 
 class Output(Scene):
     '''
