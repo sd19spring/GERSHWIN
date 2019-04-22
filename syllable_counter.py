@@ -23,22 +23,30 @@ for word_entry in pronnunciation_dict:
             count += 1
     words[word_list[0]] = count
 
-def syllable_count(word):
+def word_syllables(word):
     """
     this function allows you to input a word and the syllable count is the output
     """
-    return words[word.upper()]
+    return words.get(word.upper(), 0)
 
- def phrase_syllables(phrase):
+def phrase_syllables(phrase):
     """
     this function allows you to imput phrases
     """
-     phrase = phrase.upper
+    phrase_words = phrase.split()
+    count = 0
+    for phrase_word in phrase_words:
+        i = 0
+        while i < len(phrase_word):
+            if string.digits.find(phrase_word[i]) > -1 or string.punctuation.find(phrase_word[i]) > -1:
+                phrase_word = phrase_word[0:i] + phrase_word[i + 1:]
 
-#take phrase and remove punctuation, make all upper
-#break phrase into words
-#take words and count syllables
-#add syllabe count to get phrase count
+            i += 1
+
+        count += word_syllables(phrase_word)
+
+    return count
 
 
-print(syllable_count("software"))
+print(word_syllables("software"))
+print(phrase_syllables("software design is difficult"))
