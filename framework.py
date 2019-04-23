@@ -130,10 +130,12 @@ class Title(Scene):
         pass
 
     def ProcessInput(self, events, pressed_keys):
-        for event in events:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                # Move to the next scene when the user pressed Enter
-                self.SwitchToScene(Output())
+                for event in events:
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        (a, b) = pygame.mouse.get_pos()
+                        if a>650 and b>610 and a<950 and b<680:
+                        # Move to the next scene when the user pressed Enter
+                            self.SwitchToScene(Output())
 
     def Render(self, screen):
 
@@ -202,9 +204,11 @@ class Output(Scene):
 
     def ProcessInput(self, events, pressed_keys):
         for event in events:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                (a, b) = pygame.mouse.get_pos()
+                if a>650 and b>610 and a<950 and b<680:
                 # Move to the next scene when the user pressed Enter
-                self.SwitchToScene(Title())
+                    self.SwitchToScene(Title())
 
     def Render(self, screen):
 
