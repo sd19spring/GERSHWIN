@@ -108,6 +108,37 @@ Bbminor_s = [Bb, C5, Db5, Eb5, F5, Gb5, Ab5, Bb5]
 bluesmajor_s = [C, D, Eb, E, G, A]
 bluesminor_s = [C, Eb, F, Gb, G, Bb, C5]
 
+#chord progressions
+
+#pop
+#I_V_vi_IV major
+Cmajor_cp = [Cmajor_c, Gmajor_c, Aminor_c, Fmajor_c] #most common
+Dbmajor_cp = [Dbmajor_c, Abmajor_c, Bbminor_c, Gbmajor_c]
+Dmajor_cp = [Dmajor_c, Amajor_c, Bminor_c, Gmajor_c]
+Ebmajor_cp = [Ebmajor_c, Bbmajor_c, Cminor_c, Abmajor_c]
+Emajor_cp = [Emajor_c, Bmajor_c, Dbminor_c, Amajor_c]
+Fmajor_cp = [Fmajor_c, Cmajor_c, Dminor_c, Bbmajor_c]
+Gbmajor_cp = [Gbmajor_c, Dbmajor_c, Ebminor_c, Bmajor_c]
+Gmajor_cp = [Gmajor_c, Dmajor_c, Eminor_c, Cmajor_c] #most common
+Abmajor_cp = [Abmajor_c, Ebmajor_c, Fminor_c, Dbmajor_c]
+Amajor_cp = [Amajor_c, Emajor_c, Gbminor_c, Dmajor_c]
+Bbmajor_cp = [Bbmajor_c, Fmajor_c, Gminor_c, Ebmajor_c]
+Bmajor_cp = [Bmajor_c, Gbmajor_c, Abminor_c, Emajor_c]
+
+#I_V_vi_IV minor
+Aminor_cp = [Aminor_c, Fmajor_c, Cmajor_c, Gmajor_c] #most common
+Bbminor_cp = [Bbminor_c, Gbmajor_c, Dbmajor_c, Abmajor_c]
+Bminor_cp = [Bminor_c, Gmajor_c, Dmajor_c, Amajor_c]
+Cminor_cp = [Cminor_c, Abmajor_c, Ebmajor_c, Bbmajor_c]
+Dbminor_cp = [Dbminor_c, Amajor_c, Emajor_c, Bmajor_c]
+Dminor_cp = [Dminor_c, Bbmajor_c, Fmajor_c, Cmajor_c]
+Ebminor_cp = [Ebminor_c, Bmajor_c, Gbmajor_c, Dbmajor_c]
+Eminor_cp = [Eminor_c, Cmajor_c, Gmajor_c, Dmajor_c] #most common
+Fminor_cp = [Fminor_c, Dbmajor_c, Abmajor_c, Ebmajor_c]
+Gbminor_cp = [Gbminor_cp, Dmajor_c, Amajor_c, Emajor_c]
+Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
+Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
+
 #testing out streams
 s1 = stream.Stream()
 for note in Cmajor_s:
