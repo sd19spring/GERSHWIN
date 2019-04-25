@@ -47,9 +47,35 @@ Bb5 = note.Note("B-5", type='quarter')
 
 rest = note.Rest()
 
-#chords
-Cmajor_c = chord.Chord([A, E, G], type='quarter')
+#major chords
+Cmajor_c = chord.Chord([C, E, G], type='quarter')
+Dbmajor_c = chord.Chord([Db, F, Ab], type='quarter')
+Dmajor_c = chord.Chord([D, Gb, A], type='quarter')
+Ebmajor_c = chord.Chord([Eb, G, Bb], type='quarter')
+Emajor_c = chord.Chord([E, Ab, B], type='quarter')
+Fmajor_c = chord.Chord([F, A, C5], type='quarter')
+Gbmajor_c = chord.Chord([Gb, Bb, Db5], type='quarter')
+Gmajor_c = chord.Chord([G, B, D5], type='quarter')
+Abmajor_c = chord.Chord([Ab, C5, Eb5], type='quarter')
+Amajor_c = chord.Chord([A, Db5, Gb5], type='quarter')
+Bbmajor_c = chord.Chord([Bb, D5, F5], type='quarter')
+Bmajor_c = chord.Chord([B5, Eb5, Gb5], type='quarter')
+
 # print(Cmajor_c)
+
+#minor chords
+Cminor_c = chord.Chord([C, Eb, G], type='quarter')
+Dminor_c = chord.Chord([D, F, A], type='quarter')
+Eminor_c = chord.Chord([E, G, B], type='quarter')
+Fminor_c = chord.Chord([F, Ab,C5], type='quarter')
+Gminor_c = chord.Chord([G, Bb, D5], type='quarter')
+Aminor_c = chord.Chord([A, C5, E5], type='quarter')
+Bminor_c = chord.Chord([B, D5, Gb5], type='quarter')
+Dbminor_c = chord.Chord([Db, E, Ab], type='quarter')
+Ebminor_c = chord.Chord([Eb, Gb, Bb], type='quarter')
+Gbminor_c = chord.Chord([Gb, A, Db5], type='quarter')
+Abminor_c = chord.Chord([Ab, B, Eb5], type='quarter')
+Bbminor_c = chord.Chord([Bb, Db5, F5], type='quarter')
 
 #scales:major
 Cmajor_s = [C, D, E, F, G, A, B, C5]
