@@ -1,4 +1,3 @@
-import string
 import pygame
 from pygame.locals import *
 from sys import exit
@@ -137,6 +136,12 @@ class Title(Scene):
                         if a>650 and b>610 and a<950 and b<680:
                         # Move to the next scene when the user pressed Enter
                             self.SwitchToScene(Output())
+                jazz.check_clicked(events)
+                rb.check_clicked(events)
+                pop.check_clicked(events)
+                rock.check_clicked(events)
+                random.check_clicked(events)
+                generate.check_clicked(events)
 
     def Render(self, screen):
 
@@ -210,6 +215,7 @@ class Output(Scene):
                 if a>650 and b>610 and a<950 and b<680:
                 # Move to the next scene when the user pressed Enter
                     self.SwitchToScene(Title())
+            back.check_clicked(events)
 
     def Render(self, screen):
 
@@ -217,11 +223,18 @@ class Output(Scene):
         screen.fill(darkgreen)
 
         #creating title
-        title = bigfont.render('O U T P UT  S O N G', True, white)
+        title = bigfont.render('O U T P U T  S O N G', True, white)
         text_rect = title.get_rect(center=(s_width/2, s_height/4))
         screen.blit(title,text_rect)
 
-
+        (a, b) = pygame.mouse.get_pos()
+        if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
+            pygame.draw.rect(screen,grey,[650, s_height/1.3,300,60],0)
+        else:
+            pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
+        step3 = smallfont.render('B A C K  T O  M E N U !', True, white)
+        s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
+        screen.blit(step3,s3_rect)
 
 class Button():
     '''
@@ -278,48 +291,7 @@ pop = Button('Pop', (150, 70), coords=(724,450))
 rock = Button('Rock', (150, 70), coords=(936,450))
 random = Button('Random Genre', (150, 70), coords=(1148,450))
 generate = Button('Generate Music', (300, 70), coords=(650,610))
-
-"""
-SYLLABLE COUNTER
-"""
-
-#initialize the dictionary and open the CMU dictionary file
-pronnunciation_dict = open("syllable_dict.txt", "r")
-words = dict()
-
-#breakdown CMU dictionary and make a new one that gives us just the syllable count
-for word_entry in pronnunciation_dict:
-    word_list = word_entry.split()
-    words[word_list[0]] = "".join(word_list[1:])
-    count = 0
-    for i in range(0, len(words[word_list[0]])):
-        if words[word_list[0]][i] in string.digits:
-            count += 1
-    words[word_list[0]] = count
-
-def word_syllables(word):
-    """
-    this function allows you to input a word and the syllable count is the output
-    """
-    return words.get(word.upper(), 0)
-
-def phrase_syllables(phrase):
-    """
-    this function allows you to imput phrases
-    """
-    phrase_words = phrase.split()
-    count = 0
-    for phrase_word in phrase_words:
-        i = 0
-        while i < len(phrase_word):
-            if string.digits.find(phrase_word[i]) > -1 or string.punctuation.find(phrase_word[i]) > -1:
-                phrase_word = phrase_word[0:i] + phrase_word[i + 1:]
-
-            i += 1
-
-        count += word_syllables(phrase_word)
-
-    return count
+back = Button('Go Back', (300, 70), coords=(650,610))
 #------------------------------------------------------------------#
 
 
@@ -365,12 +337,6 @@ def main(fps, starting_scene):
         active_scene.ProcessInput(filtered_events, pressed_keys)
         active_scene.Update()
         active_scene.Render(screen)
-        jazz.check_clicked(filtered_events)
-        rb.check_clicked(filtered_events)
-        pop.check_clicked(filtered_events)
-        rock.check_clicked(filtered_events)
-        random.check_clicked(filtered_events)
-        generate.check_clicked(filtered_events)
 
         active_scene = active_scene.next
 
