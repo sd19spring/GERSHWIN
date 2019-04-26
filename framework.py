@@ -70,27 +70,6 @@ def check_quit(events):
             quittin_time = True
     return quittin_time
 
-def check_click(scene, events):
-    """
-    Check for a click and when something is clicked check to see what it clicked
-    on and call that items ClickedAction()
-    """
-    for event in events:
-        #print("event")
-            # Maybe this should be moved to Scene, so the game doesn't need
-            # to know about this logic.
-        #printline to check if this is being called
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            # Buttons in the Scene are drawn first-to-last, so when two Buttons
-            # overlap, the last one is displayed. We want to check for clicks
-            # last-to-first, so you only click on the top Button.
-            Buttons = scene.list_Buttons()[::-1]
-            for Button in Buttons:
-                #print("Checking Button {}".format(Button.imgname))
-                if Button.check_click():
-                    # Only click one Button
-                    break
-
 class Scene():
     """
     initiating generic Scene class
@@ -235,6 +214,12 @@ class Output(Scene):
         step3 = smallfont.render('B A C K  T O  M E N U !', True, white)
         s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
         screen.blit(step3,s3_rect)
+
+        make_shapes(screen)
+
+        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,200],3)
+        out = smallfont.render('v i s u a l  o u t p u t  w i l l  g o  h e r e !', True, white)
+        screen.blit(out,(650,s_height/2))
 
 class Button():
     '''
