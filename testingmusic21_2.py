@@ -1,4 +1,6 @@
 from music21 import *
+import syllable_counter as sc
+
 #setting up the environment, connecting music21 to sheet music generator and MIDI player
 musicxmlpath = '/var/lib/snapd/snaps/musescore_68.snap'
 
@@ -10,9 +12,9 @@ us['midiPath'] = midipath
 
 #testing built in classes and methods
 f = note.Note("F5")
-print(f.name)
-print(f.octave)
-print(f.pitch)
+# print(f.name)
+# print(f.octave)
+# print(f.pitch)
 
 """
 INITIATING NOTES
@@ -135,7 +137,7 @@ Dminor_cp = [Dminor_c, Bbmajor_c, Fmajor_c, Cmajor_c]
 Ebminor_cp = [Ebminor_c, Bmajor_c, Gbmajor_c, Dbmajor_c]
 Eminor_cp = [Eminor_c, Cmajor_c, Gmajor_c, Dmajor_c] #most common
 Fminor_cp = [Fminor_c, Dbmajor_c, Abmajor_c, Ebmajor_c]
-Gbminor_cp = [Gbminor_cp, Dmajor_c, Amajor_c, Emajor_c]
+Gbminor_cp = [Gbminor_c, Dmajor_c, Amajor_c, Emajor_c]
 Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
 Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
 
@@ -150,9 +152,22 @@ s2.append(Cmajor_c)
 s3 = stream.Stream()
 for note in bluesminor_s:
     s3.append(note)
+
+def input_def():
+    i = input("Name your lyric: ")
+    num_syl = sc.phrase_syllables(i)
+    s4 = stream.Stream()
+    for i in range(0, num_syl):
+        s4.append(bluesmajor_s[i])
+    s4.show('text')
+    s4.show('midi')
+        #stream.append(note)
+
+    #stream.show('midi')
+input_def()
 #testing sheet music generator
 #f.show()
 #testing MIDI player
 # s1.show('midi')
 # s2.show('midi')
-s3.show('midi')
+#s3.show('midi')
