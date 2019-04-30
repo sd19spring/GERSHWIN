@@ -218,9 +218,10 @@ class Output(Scene):
         (a, b) = pygame.mouse.get_pos()
         if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
             pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],0)
+            step3 = smallfont.render('B A C K  T O  M E N U !', True, darkblue)
         else:
             pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
-        step3 = smallfont.render('B A C K  T O  M E N U !', True, white)
+            step3 = smallfont.render('B A C K  T O  M E N U !', True, white)
         s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
         screen.blit(step3,s3_rect)
 
