@@ -4,7 +4,7 @@ import syllable_counter as sc
 import framework as fw
 import random
 #setting up the environment, connecting music21 to sheet music generator and MIDI player
-musicxmlpath = '/var/lib/snapd/snaps/musescore_68.snap'
+musicxmlpath = '/usr/bin/musescore' #do sudo apt install musescore
 
 midipath = '/usr/bin/timidity' #static path using
 
