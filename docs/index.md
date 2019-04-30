@@ -6,11 +6,9 @@ _insert a project description here_
 
 _insert a video of the project working here_
 
-[## How to Use](how_to_use.md)
+## [How to Use](how_to_use.md)
 
-download project [here](https://github.com/sd19spring/final-project-annie-eriel-joanna-madi)
 
-_insert instructions on how to use here_
 
 {## How It Works}(how_it_works.md)
 
