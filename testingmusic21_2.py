@@ -7,9 +7,8 @@ import random
 musicxmlpath = '/var/lib/snapd/snaps/musescore_68.snap'
 
 midipath = '/usr/bin/timidity' #static path using
-
 us = environment.UserSettings()
-#us['musicxmlPath'] = musicxmlpath
+us['musicxmlPath'] = 'MuseScore-3.0.5-x86_64.AppImage'
 us['midiPath'] = midipath
 
 """
@@ -178,4 +177,7 @@ def input_def():
         #stream.append(note)
 
     #stream.show('midi')
-input_def()
+
+F.show()
+F.show('midi')
+#input_def()
