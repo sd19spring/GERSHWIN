@@ -10,27 +10,15 @@ _insert a video of the project working here_
 
 
 
-{## How It Works}(how_it_works.md)
+## [How It Works](how_it_works.md)
 
-_insert UML Diagram_
 
-_insert flow charts_
 
-_step through code, pull where necessary_
+## [How We Got Here](how_we_got_here.md)
 
-[## How We Got Here](how_we_got_here.md)
 
-_ideation process_
+## [Meet the Team](meet_the_team.md)
 
-_successes and failures_
-
-_show general process_
-
-[## Meet the Team](meet_the_team.md)
-
-_cute bios of everyone_
-
-_cute pictures of everyone_
 
 
 Made with <3 at Olin College
