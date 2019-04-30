@@ -48,5 +48,5 @@ def phrase_syllables(phrase):
     return count
 
 
-print(word_syllables("software"))
-print(phrase_syllables("software design is difficult"))
+# print(word_syllables("software"))
+# print(phrase_syllables("software design is difficult"))

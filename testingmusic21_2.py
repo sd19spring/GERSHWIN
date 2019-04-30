@@ -1,5 +1,6 @@
 from music21 import *
 from pygame.locals import *
+import pygame
 import syllable_counter as sc
 import framework as fw
 import random
@@ -8,7 +9,7 @@ musicxmlpath = '/usr/bin/musescore' #do sudo apt install musescore
 
 midipath = '/usr/bin/timidity' #static path using
 us = environment.UserSettings()
-us['musicxmlPath'] = 'MuseScore-3.0.5-x86_64.AppImage'
+us['musicxmlPath'] = musicxmlpath
 us['midiPath'] = midipath
 
 """
@@ -140,7 +141,7 @@ def build_jazz(new_song, num_syl):
     change = [-1,1]
     start_note = random.randrange(0, len(bluesmajor_s)-1)
     new_song.append(bluesmajor_s[start_note])
-    print(new_song)
+    #print(new_song)
     for i in range(0, num_syl):
         delt = random.choice(change)
         start_note = start_note+delt
@@ -158,9 +159,9 @@ def build_pop(new_song, num_syl):
     return new_song
 
 def choices(genres, i, new_song, num_syl):
-    if genres[0] in i: #if fw.jazz.check_clicked() == True *GETTING EVENTS ERROR*
+    if fw.jazz.check_clicked(pygame.event.get()) == True:
         return build_jazz(new_song, num_syl)
-    elif genres[1] in i:
+    elif fw.pop.check_clicked(pygame.event.get()) == True:
         return build_pop(new_song, num_syl)
 
 def input_def():
@@ -178,6 +179,6 @@ def input_def():
 
     #stream.show('midi')
 
-F.show()
-F.show('midi')
-#input_def()
+# F.show()
+# F.show('midi')
+input_def()
