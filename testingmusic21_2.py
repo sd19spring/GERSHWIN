@@ -1,6 +1,8 @@
 from music21 import *
+from pygame.locals import *
 import syllable_counter as sc
-
+import framework as fw
+import random
 #setting up the environment, connecting music21 to sheet music generator and MIDI player
 musicxmlpath = '/var/lib/snapd/snaps/musescore_68.snap'
 
@@ -9,12 +11,6 @@ midipath = '/usr/bin/timidity' #static path using
 us = environment.UserSettings()
 #us['musicxmlPath'] = musicxmlpath
 us['midiPath'] = midipath
-
-#testing built in classes and methods
-f = note.Note("F5")
-# print(f.name)
-# print(f.octave)
-# print(f.pitch)
 
 """
 INITIATING NOTES
@@ -141,33 +137,45 @@ Gbminor_cp = [Gbminor_c, Dmajor_c, Amajor_c, Emajor_c]
 Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
 Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
 
-#testing out streams
-s1 = stream.Stream()
-for note in Cmajor_s:
-    s1.append(note)
-#print(s1.show('text'))
-s2 = stream.Stream()
-s2.append(Cmajor_c)
+def build_jazz(new_song, num_syl):
+    change = [-1,1]
+    start_note = random.randrange(0, len(bluesmajor_s)-1)
+    new_song.append(bluesmajor_s[start_note])
+    print(new_song)
+    for i in range(0, num_syl):
+        delt = random.choice(change)
+        start_note = start_note+delt
+        new_song.append(bluesmajor_s[start_note])
+    return new_song
 
-s3 = stream.Stream()
-for note in bluesminor_s:
-    s3.append(note)
+def build_pop(new_song, num_syl):
+    change = [-2,-1,1,2]
+    start_chord = random.randrange(0, len(Gmajor_cp)-1)
+    new_song.append(Gmajor_cp[start_chord])
+    for i in range(0,num_syl):
+        delt = random.choice(change)
+        start_chord = start_chord+delt
+        new_song.append(Gmajor_cp[start_chord])
+    return new_song
+
+def choices(genres, i, new_song, num_syl):
+    if genres[0] in i:
+        return build_jazz(new_song, num_syl)
+    elif genres[1] in i:
+        return build_pop(new_song, num_syl)
 
 def input_def():
     i = input("Name your lyric: ")
     num_syl = sc.phrase_syllables(i)
-    s4 = stream.Stream()
-    for i in range(0, num_syl):
-        s4.append(bluesmajor_s[i])
-    s4.show('text')
-    s4.show('midi')
+    #s4 = stream.Stream()
+    new_song = []
+    genres = ['jazz', 'pop']
+    #fw.main(60,fw.Title())
+    print(choices(genres,i, new_song, num_syl))
+
+    # s4.show('text')
+    # s4.show('midi')
         #stream.append(note)
 
     #stream.show('midi')
 input_def()
-#testing sheet music generator
-#f.show()
-#testing MIDI player
-# s1.show('midi')
-# s2.show('midi')
-#s3.show('midi')
