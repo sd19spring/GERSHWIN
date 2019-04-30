@@ -159,7 +159,7 @@ def build_pop(new_song, num_syl):
     return new_song
 
 def choices(genres, i, new_song, num_syl):
-    if genres[0] in i:
+    if genres[0] in i: #if fw.jazz.check_clicked() == True *GETTING EVENTS ERROR*
         return build_jazz(new_song, num_syl)
     elif genres[1] in i:
         return build_pop(new_song, num_syl)
@@ -170,9 +170,9 @@ def input_def():
     #s4 = stream.Stream()
     new_song = []
     genres = ['jazz', 'pop']
-    #fw.main(60,fw.Title())
-    print(choices(genres,i, new_song, num_syl))
-
+    fw.main(60,fw.Title())
+    x = choices(genres,i, new_song, num_syl)
+    print(x)
     # s4.show('text')
     # s4.show('midi')
         #stream.append(note)
