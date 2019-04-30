@@ -240,6 +240,7 @@ class Button():
         # Coords from tuple to ints
         self.x = coords[0]
         self.y = coords[1]
+        self.clicked = False
 
     def check_clicked(self, events):
         """
@@ -254,14 +255,14 @@ class Button():
         if a>x and b>y and a<x+xsize and b<y+ysize:
             for event in events:
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.clickedAction()
-            return True
-        return False
+                    self.clickedAction(events)
+                    self.clicked = True
+        return self.clicked
 
     def render(self, screen):
         """TODO: RENDER ITEMS"""
 
-    def clickedAction(self):
+    def clickedAction(self, events):
         """This is a default click action so we know that the method works"""
         print("The {} button was clicked!".format(self.imgname))
 
