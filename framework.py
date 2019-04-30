@@ -78,19 +78,12 @@ class Scene():
         self.next = self
         self.Buttons= []
 
-    def list_Buttons(self):
-        return self.Buttons
-
     def render(self, screen):
         """
         The Scene renders its background and all the Buttons in it.
         """
         # print("Drawing scene {}".format(self.imgname))
         screen.fill(self.color)
-
-        for button in self.Buttons:
-            # print("  Drawing Button {}".format(button.imgname))
-            button.render(screen)
 
     def SwitchToScene(self, next_scene):
         self.next = next_scene
@@ -271,6 +264,7 @@ class Button():
     def clickedAction(self):
         """This is a default click action so we know that the method works"""
         print("The {} button was clicked!".format(self.imgname))
+
 
 
 class Game:
