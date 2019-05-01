@@ -58,6 +58,89 @@ def make_shapes(screen):
     draw_geo(s_width-250,350,200,250,screen)
     draw_geo(50,600,200,250,screen)
     draw_geo(s_width-250,600,200,250,screen)
+
+def make_piano(screen):
+    key_w = 75
+    key_l = 200
+    xi = 275
+    key_y = s_height/2.5
+    for x in range(xi,xi+(key_w*14),key_w):
+        pygame.draw.rect(screen,white,[x, key_y,key_w,key_l],0)
+        pygame.draw.rect(screen,grey,[x, key_y,key_w,key_l],2)
+
+    for x in range(int(xi+(key_w/1.5)),int(xi+(key_w*3)-(key_w/2)),key_w):
+        pygame.draw.rect(screen,black,[x,key_y,key_w/1.5, key_l/1.5])
+
+    for x in range(int(xi+(key_w*7)+(key_w/1.5)),int(xi+(key_w*10)-(key_w/1.5)),key_w):
+        pygame.draw.rect(screen,black,[x,key_y,key_w/1.5, key_l/1.5])
+
+    for x in range(int(xi+(key_w*3)+(key_w/1.5)),int(xi+(key_w*7)-(key_w/1.5)),key_w):
+        pygame.draw.rect(screen,black,[x,key_y,key_w/1.5, key_l/1.5])
+
+    for x in range(int(xi+(key_w*10)+(key_w/1.5)),int(xi+(key_w*14)-(key_w/1.5)),key_w):
+        pygame.draw.rect(screen,black,[x,key_y,key_w/1.5, key_l/1.5])
+
+def title_desc(screen):
+    #creating title
+    title = bigfont.render('G E R S H W I N', True, white)
+    text_rect = title.get_rect(center=(s_width/2, s_height/10))
+    screen.blit(title,text_rect)
+
+    #create line
+    pygame.draw.line(screen,white, (300, s_height/5), (s_width-300, s_height/5), 2)
+
+    #description text
+    desc = medfont.render('r a n d o m   t u n e   g e n e r a t o r   w i t h   l y r i c a l   i n p u t', True, white)
+    desc_rect = desc.get_rect(center=(s_width/2, s_height/4))
+    screen.blit(desc,desc_rect)
+
+def step1(a,b,screen):
+
+    if a > 300 and a < 1300 and b > (s_height/2.5) and b < (s_height/2.5)+60:
+        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],0)
+
+    else:
+        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
+
+    step1 = smallfont.render('S T E P  1 : i n p u t  a  l y r i c', True, white)
+    screen.blit(step1,(300,s_height/2.8))
+
+def step2(a,b,screen):
+    ran = list(range(300, s_width-300, 212))
+
+    for x in range(0,len(g_list)):
+        genre = medfont.render(g_list[x], True, white)
+        genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
+        screen.blit(genre,genre_rect)
+
+        #step 2
+        #x = 0, 1...
+        #i = 300, 512...
+        #212x+300=i -> (i-300)/212 = x
+    for i in ran:
+        if a>i and a<i+150 and b>(s_height/1.75) and b < (s_height/1.75)+60:
+            pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60],0)
+            x = int((i-300)/212)
+            genre = medfont.render(g_list[x], True, darkblue)
+            genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
+            screen.blit(genre,genre_rect)
+        else:
+            pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
+
+    step2 = smallfont.render('S T E P  2 : c h o o s e  a  g e n r e', True, white)
+    screen.blit(step2,(300, s_height/1.9))
+
+def step3(a,b,screen):
+        #step 3
+    if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
+        pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],0)
+        step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, darkblue)
+    else:
+        pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
+        step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, white)
+    s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
+    screen.blit(step3,s3_rect)
+
 #-----------------------------------------
 
 def check_quit(events):
@@ -120,61 +203,18 @@ class Title(Scene):
         #create black screen
         screen.fill(darkblue)
 
-        #creating title
-        title = bigfont.render('G E R S H W I N', True, white)
-        text_rect = title.get_rect(center=(s_width/2, s_height/10))
-        screen.blit(title,text_rect)
+        #creating title, line, description
+        title_desc(screen)
 
-        #create line
-        pygame.draw.line(screen,white, (300, s_height/5), (s_width-300, s_height/5), 2)
-
-        #description text
-        desc = medfont.render('r a n d o m   t u n e   g e n e r a t o r   w i t h   l y r i c a l   i n p u t', True, white)
-        desc_rect = desc.get_rect(center=(s_width/2, s_height/4))
-        screen.blit(desc,desc_rect)
-        ran = list(range(300, s_width-300, 212))
-
+        #setting position pos
         (a, b) = pygame.mouse.get_pos()
-        #step 1
-        if a > 300 and a < 1300 and b > (s_height/2.5) and b < (s_height/2.5)+60:
-            pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],0)
 
-        else:
-            pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
-
-        for x in range(0,len(g_list)):
-                    genre = medfont.render(g_list[x], True, white)
-                    genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
-                    screen.blit(genre,genre_rect)
-        step1 = smallfont.render('S T E P  1 : i n p u t  a  l y r i c', True, white)
-        screen.blit(step1,(300,s_height/2.8))
-
-        #step 2
-        #x = 0, 1...
-        #i = 300, 512...
-        #212x+300=i -> (i-300)/212 = x
-        for i in ran:
-            if a>i and a<i+150 and b>(s_height/1.75) and b < (s_height/1.75)+60:
-                pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60],0)
-                x = int((i-300)/212)
-                genre = medfont.render(g_list[x], True, darkblue)
-                genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
-                screen.blit(genre,genre_rect)
-            else:
-                pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
-
-        step2 = smallfont.render('S T E P  2 : c h o o s e  a  g e n r e', True, white)
-        screen.blit(step2,(300, s_height/1.9))
-
-        #step 3
-        if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
-            pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],0)
-            step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, darkblue)
-        else:
-            pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],3)
-            step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, white)
-        s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
-        screen.blit(step3,s3_rect)
+        #lyric input
+        step1(a,b,screen)
+        #genre choice
+        step2(a,b,screen)
+        #generate my song button
+        step3(a,b,screen)
 
         #geometric points
         make_shapes(screen)
@@ -220,9 +260,15 @@ class Output(Scene):
 
         make_shapes(screen)
 
-        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,200],3)
+
+        #pygame.draw.rect(screen,white,[300, s_height/2.5,1000,200],3)
+
+        #creating piano
+        make_piano(screen)
+
+
         out = smallfont.render('v i s u a l  o u t p u t  w i l l  g o  h e r e !', True, white)
-        screen.blit(out,(650,s_height/2))
+        screen.blit(out,(650,s_height/4))
 
 class Button():
     '''
