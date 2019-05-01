@@ -4,6 +4,8 @@ import pygame
 import syllable_counter as sc
 import framework as fw
 import random
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 #setting up the environment, connecting music21 to sheet music generator and MIDI player
 musicxmlpath = '/usr/bin/musescore' #do sudo apt install musescore
 
@@ -137,11 +139,16 @@ Gbminor_cp = [Gbminor_c, Dmajor_c, Amajor_c, Emajor_c]
 Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
 Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
 
-def build_jazz(num_syl):
+def build_jazz(num_syl, key):
+    if key == True:
+        base = bluesmajor_s
+    if key == False:
+        base = bluesminor_s
+
     new_song = stream.Stream()
     change = [-1,1]
-    start_note = random.randrange(0, len(bluesmajor_s)-1)
-    new_song.append(bluesmajor_s[start_note])
+    start_note = random.randrange(0, len(base)-1)
+    new_song.append(base[start_note])
     print(new_song)
 
     for i in range(0, num_syl):
@@ -150,19 +157,23 @@ def build_jazz(num_syl):
 
         if start_note < 0:
             start_note = random.choice(range(0,3))
-        if start_note > len(bluesmajor_s)-1:
-            start_note = random.choice(range(3,len(bluesmajor_s)-1))
+        if start_note > len(base)-1:
+            start_note = random.choice(range(3,len(base)-1))
 
-        new_song.repeatAppend(bluesmajor_s[start_note],1)
+        new_song.repeatAppend(base[start_note],1)
 
     new_song.show('midi')
     new_song.show()
 
     return new_song
 
-
-
 def build_pop(num_syl):
+    major = []
+    if key == True:
+        base = bluesmajor_s
+    if key == False:
+        base = bluesminor_s
+
     new_song = stream.Stream()
     change = [-2,-1,1,2]
     start_chord = random.randrange(0, len(Gmajor_cp)-1)
@@ -177,7 +188,7 @@ def build_pop(num_syl):
             start_chord = random.choice(range(0,len(Gmajor_cp)-1))
 
         new_song.repeatAppend(Gmajor_cp[start_chord],1)
-
+    new_song.id = 'will this work'
     new_song.show('midi')
     new_song.show()
     return new_song
@@ -188,9 +199,18 @@ def choices(num_syl):
     elif fw.pop.check_clicked(pygame.event.get()) == True:
         return build_pop(num_syl)
 
+def input_to_key(i):
+    sent = SentimentIntensityAnalyzer()
+    polarity = sent.polarity_scores(i)
+    if polarity['neg'] > polarity ['pos']:
+        return False
+    else:
+        return True
+
 def input_def():
     i = input("Name your lyric: ")
     num_syl = sc.phrase_syllables(i)
+    key = input_to_key(i)
     #s4 = stream.Stream()
     fw.main(60,fw.Title())
     song_elements = choices(num_syl)
@@ -203,4 +223,4 @@ def input_def():
 
 # F.show()
 # F.show('midi')
-input_def()
+#input_def()
