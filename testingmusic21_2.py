@@ -137,17 +137,6 @@ Gbminor_cp = [Gbminor_c, Dmajor_c, Amajor_c, Emajor_c]
 Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
 Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
 
-# def build_jazz(num_syl):
-#     new_song = []
-#     change = [-1,1]
-#     start_note = random.randrange(0, len(bluesmajor_s)-1)
-#     new_song.append(bluesmajor_s[start_note])
-#     for i in range(0, num_syl):
-#         delt = random.choice(change)
-#         start_note = start_note+delt
-#         new_song.append(bluesmajor_s[start_note])
-#     return new_song
-
 def build_jazz(num_syl):
     new_song = stream.Stream()
     change = [-1,1]
@@ -158,6 +147,7 @@ def build_jazz(num_syl):
     for i in range(0, num_syl):
         delt = random.choice(change)
         start_note = start_note+delt
+
         if start_note < 0:
             start_note = random.choice(range(0,3))
         if start_note > len(bluesmajor_s)-1:
@@ -165,21 +155,31 @@ def build_jazz(num_syl):
 
         new_song.repeatAppend(bluesmajor_s[start_note],1)
 
-    new_song.show()
     new_song.show('midi')
+    new_song.show()
+
     return new_song
 
 
 
 def build_pop(num_syl):
-    new_song = []
+    new_song = stream.Stream()
     change = [-2,-1,1,2]
     start_chord = random.randrange(0, len(Gmajor_cp)-1)
     new_song.append(Gmajor_cp[start_chord])
+    print(new_song)
+
     for i in range(0,num_syl):
         delt = random.choice(change)
         start_chord = start_chord+delt
-        new_song.append(Gmajor_cp[start_chord])
+
+        if start_chord < 0 or start_chord > len(Gmajor_cp)-1:
+            start_chord = random.choice(range(0,len(Gmajor_cp)-1))
+
+        new_song.repeatAppend(Gmajor_cp[start_chord],1)
+
+    new_song.show('midi')
+    new_song.show()
     return new_song
 
 def choices(num_syl):
