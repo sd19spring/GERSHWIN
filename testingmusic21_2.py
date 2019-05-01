@@ -139,17 +139,15 @@ Gbminor_cp = [Gbminor_c, Dmajor_c, Amajor_c, Emajor_c]
 Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
 Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
 
-def build_jazz(num_syl, key):
+def build_jazz(num_syl, key, new_song):
     if key == True:
         base = bluesmajor_s
     if key == False:
         base = bluesminor_s
 
-    new_song = stream.Stream()
     change = [-1,1]
     start_note = random.randrange(0, len(base)-1)
     new_song.append(base[start_note])
-    print(new_song)
 
     for i in range(0, num_syl):
         delt = random.choice(change)
@@ -162,42 +160,36 @@ def build_jazz(num_syl, key):
 
         new_song.repeatAppend(base[start_note],1)
 
-    new_song.show('midi')
-    new_song.show()
-
     return new_song
 
-def build_pop(num_syl):
-    major = []
+def build_pop(num_syl, key, new_song):
+    major = [Cmajor_cp, Dbmajor_cp, Dmajor_cp, Ebmajor_cp, Emajor_cp, Fmajor_cp, Gbmajor_cp, Gmajor_cp , Abmajor_cp, Amajor_cp, Bbmajor_cp, Bmajor_cp]
+    minor = [Cminor_cp, Dbminor_cp, Dminor_cp, Ebminor_cp, Eminor_cp, Fminor_cp, Gbminor_cp, Gminor_cp , Abminor_cp, Aminor_cp, Bbminor_cp, Bminor_cp]
     if key == True:
-        base = bluesmajor_s
+        base = random.choice(major)
     if key == False:
-        base = bluesminor_s
+        base = random.choice(minor)
 
-    new_song = stream.Stream()
     change = [-2,-1,1,2]
-    start_chord = random.randrange(0, len(Gmajor_cp)-1)
-    new_song.append(Gmajor_cp[start_chord])
-    print(new_song)
+    start_chord = random.randrange(0, len(base)-1)
+    new_song.append(base[start_chord])
 
     for i in range(0,num_syl):
         delt = random.choice(change)
         start_chord = start_chord+delt
 
-        if start_chord < 0 or start_chord > len(Gmajor_cp)-1:
-            start_chord = random.choice(range(0,len(Gmajor_cp)-1))
+        if start_chord < 0 or start_chord > len(base)-1:
+            start_chord = random.choice(range(0,len(base)-1))
 
-        new_song.repeatAppend(Gmajor_cp[start_chord],1)
-    new_song.id = 'will this work'
-    new_song.show('midi')
-    new_song.show()
+        new_song.repeatAppend(base[start_chord],1)
+
     return new_song
 
-def choices(num_syl):
+def choices(num_syl,key,new_song):
     if fw.jazz.check_clicked(pygame.event.get()) == True:
-        return build_jazz(num_syl)
+        return build_jazz(num_syl,key,new_song)
     elif fw.pop.check_clicked(pygame.event.get()) == True:
-        return build_pop(num_syl)
+        return build_pop(num_syl,key,new_song)
 
 def input_to_key(i):
     sent = SentimentIntensityAnalyzer()
@@ -211,16 +203,11 @@ def input_def():
     i = input("Name your lyric: ")
     num_syl = sc.phrase_syllables(i)
     key = input_to_key(i)
-    #s4 = stream.Stream()
+    print(key)
+    new_song = stream.Stream()
     fw.main(60,fw.Title())
-    song_elements = choices(num_syl)
-    print(song_elements)
-    # s4.show('text')
-    # s4.show('midi')
-        #stream.append(note)
+    new_song = choices(num_syl,key,new_song)
+    new_song.show('midi')
+    new_song.show()
 
-    #stream.show('midi')
-
-# F.show()
-# F.show('midi')
-#input_def()
+input_def()
