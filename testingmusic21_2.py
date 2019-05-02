@@ -84,9 +84,9 @@ B_dim_c = chord.Chord([B3, D, F], type='quarter')
 C_dim_c = chord.Chord([C, Eb, Gb], type='quarter')
 Db_dim_c = chord.Chord([Db, E, G], type ='quarter')
 D_dim_c = chord.Chord([D, F, Ab], type='quarter')
-Eb_dim_c = chord.Chord([Eb, Gb, A], type='qaurter')
+Eb_dim_c = chord.Chord([Eb, Gb, A], type='quarter')
 E_dim_c = chord.Chord([E, G, Bb], type='quarter')
-F_dim_c = chord.Chord([F, Ab, Cb5], type='quarter')
+F_dim_c = chord.Chord([F, Ab, B5], type='quarter')
 Gb_dim_c = chord.Chord([Gb, A, C5], type='quarter')
 G_dim_c = chord.Chord([G, Bb, Db5], type='quarter')
 Ab_dim_c = chord.Chord([Ab, B, D5], type='quarter')
@@ -187,10 +187,14 @@ Abminor_cp_j = [Bb_dim_c, Ebminor_c, Abminor_c]
 
 
 def build_jazz(num_syl, key, new_song):
+    major = [bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s,
+            Cmajor_cp_j, Dbmajor_cp_j, Dmajor_cp_j, Ebmajor_cp_j, Emajor_cp_j, Fmajor_cp_j, Gbmajor_cp_j, Gmajor_cp_j, Abmajor_cp_j, Amajor_cp_j, Bbmajor_cp_j, Bmajor_cp_j]
+    minor = [bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s,
+            Cminor_cp_j, Dbminor_cp_j, Dminor_cp_j, Ebminor_cp_j, Eminor_cp_j, Fminor_cp_j, Gbminor_cp_j, Gminor_cp_j, Abminor_cp_j, Aminor_cp_j, Bbminor_cp_j, Bminor_cp_j]
     if key == True:
-        base = bluesmajor_s
+        base = random.choice(major)
     if key == False:
-        base = bluesminor_s
+        base = random.choice(minor)
 
     change = [-1,1]
     start_note = random.randrange(0, len(base)-1)
