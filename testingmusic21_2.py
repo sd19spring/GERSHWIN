@@ -184,6 +184,39 @@ Gbminor_cp_j = [Ab_dim_c, Dbminor_c, Gbminor_c]
 Gminor_cp_j = [A_dim_c, Dminor_c, Gminor_c]
 Abminor_cp_j = [Bb_dim_c, Ebminor_c, Abminor_c]
 
+#rock
+#I_VI_IV_V major
+Cmajor_cp_r = [Cmajor_c, Aminor_c, Fmajor_c, Gmajor_c]
+Dbmajor_cp_r = [Dbmajor_c, Bbminor_c, Gbmajor_c, Abmajor_c]
+Dmajor_cp_r = [Dmajor_c, Bminor_c, Gmajor_c, Amajor_c]
+Ebmajor_cp_r = [Ebmajor_c, Cminor_c, Abmajor_c, Bbmajor_c]
+Emajor_cp_r = [Emajor_c, Dbminor_c, Amajor_c, Bmajor_c]
+Fmajor_cp_r = [Fmajor_c, Dminor_c, Bbmajor_c, Cmajor_c]
+Gbmajor_cp_r = [Gbmajor_c, Ebminor_c, Bmajor_c, Dbmajor_c]
+Gmajor_cp_r = [Gmajor_c, Eminor_c, Cmajor_c, Dmajor_c]
+Abmajor_cp_r = [Abmajor_c, Fminor_c, Dbmajor_c, Ebmajor_c]
+Amajor_cp_r = [Amajor_c, Gbminor_c, Dmajor_c, Emajor_c]
+Bbmajor_cp_r = [Bbmajor_c, Gminor_c, Ebmajor_c, Fmajor_c]
+Bmajor_cp_r = [Bmajor_c, Abminor_c, Emajor_c, Gbmajor_c]
+
+#I_VI_IV_V minor
+Aminor_cp_r = [Aminor_c, Cmajor_c, Gmajor_c, Eminor_c]
+Bbminor_cp_r = [Bbminor_c, Dbmajor_c, Abmajor_c, Fminor_c]
+Bminor_cp_r = [Bminor_c, Dmajor_c, Amajor_c, Gbminor_c]
+Cminor_cp_r = [Cminor_c, Ebmajor_c, Bbmajor_c, Gminor_c]
+Dbminor_cp_r = [Dbminor_c, Emajor_c, Bmajor_c, Abminor_c]
+Dminor_cp_r = [Dminor_c, Fmajor_c, Cmajor_c, Aminor_c]
+Ebminor_cp_r = [Ebminor_c, Gbmajor_c, Dbmajor_c, Bbminor_c]
+Eminor_cp_r = [Eminor_c, Gmajor_c, Dmajor_c, Bminor_c]
+Fminor_cp_r = [Fminor_c, Abmajor_c, Ebmajor_c, Cminor_c]
+Gbminor_cp_r = [Gbminor_c, Amajor_c, Emajor_c, Dbminor_c]
+Gminor_cp_r = [Gminor_c, Bbmajor_c, Fmajor_c, Dminor_c]
+Abminor_cp_r = [Abminor_c, Bmajor_c, Gbmajor_c, Ebminor_c]
+
+
+#r&b
+Fminor_9 = chord.Chord([F, G, Ab, C5, Ab5], type='quarter')
+
 
 
 def build_jazz(num_syl, key, new_song):
