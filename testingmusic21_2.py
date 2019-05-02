@@ -230,9 +230,11 @@ def build_jazz(num_syl, key, new_song):
     minor = [bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s,
             Cminor_cp_j, Dbminor_cp_j, Dminor_cp_j, Ebminor_cp_j, Eminor_cp_j, Fminor_cp_j, Gbminor_cp_j, Gminor_cp_j, Abminor_cp_j, Aminor_cp_j, Bbminor_cp_j, Bminor_cp_j]
     if key == True:
-        base = random.choice(major)
+        #base = random.choice(major)
+        base = bluesmajor_s
     if key == False:
-        base = random.choice(minor)
+        #base = random.choice(minor)
+        base = bluesminor_s
 
     change = [-1,1]
     start_note = random.randrange(0, len(base)-1)
