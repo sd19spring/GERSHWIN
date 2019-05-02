@@ -216,7 +216,12 @@ Abminor_cp_r = [Abminor_c, Bmajor_c, Gbmajor_c, Ebminor_c]
 
 #r&b
 Fminor_9 = chord.Chord([F, G, Ab, C5, Ab5], type='quarter')
+Bb_7 = chord.Chord([F, Ab, Bb, D5], type='quarter')
+Ebminor_9 = chord.Chord([Eb, Gb, Bb, Db5, F5], type='quarter')
+Ab_7 = chord.Chord([Ab, C5, Eb5, Gb5], type='quarter')
 
+#chord progression
+rnb_cp = [Fminor_9, Bb_7, Ebminor_9, Ab_7]
 
 
 def build_jazz(num_syl, key, new_song):
