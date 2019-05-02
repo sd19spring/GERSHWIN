@@ -49,15 +49,20 @@ def make_geo(x,y,width,height):
     return points
 
 def draw_geo(x,y,width,height,screen):
-    pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 5)
+    #pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 5)
+    pygame.draw.ellipse(screen, white,(x, y, height/2, width/2), 5)
+    pygame.draw.line(screen, white, [x+120, y+50], [x+120, y-150], 5)
 
 def make_shapes(screen):
-    draw_geo(50,900,200,250,screen)
-    draw_geo(s_width-250,900,200,250,screen)
-    draw_geo(50,350,200,250,screen)
-    draw_geo(s_width-250,350,200,250,screen)
+    #draw_geo(50,900,200,250,screen)
+    #draw_geo(s_width-250,900,200,250,screen)
+    draw_geo(50,250,200,250,screen)
+    draw_geo(s_width-250,250,200,250,screen)
     draw_geo(50,600,200,250,screen)
     draw_geo(s_width-250,600,200,250,screen)
+
+def music_note(screen):
+    pygame.draw.ellipse(screen, white,[5, 5, 5, 5], 5)
 #-----------------------------------------
 
 def check_quit(events):
@@ -138,11 +143,7 @@ class Title(Scene):
 
         (a, b) = pygame.mouse.get_pos()
         #step 1
-        if a > 300 and a < 1300 and b > (s_height/2.5) and b < (s_height/2.5)+60:
-            pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],0)
-
-        else:
-            pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
+        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
         title = smallfont.render(self.lyric, True, white)
         text_rect = title.get_rect(center=(s_width/2, s_height/2.27))
         screen.blit(title,text_rect)
