@@ -143,6 +143,9 @@ class Title(Scene):
 
         else:
             pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
+        title = smallfont.render(self.lyric, True, white)
+        text_rect = title.get_rect(center=(s_width/2, s_height/2.27))
+        screen.blit(title,text_rect)
 
         for x in range(0,len(g_list)):
                     genre = medfont.render(g_list[x], True, white)
@@ -162,6 +165,7 @@ class Title(Scene):
                 genre = medfont.render(g_list[x], True, darkblue)
                 genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
                 screen.blit(genre,genre_rect)
+
             else:
                 pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
 
