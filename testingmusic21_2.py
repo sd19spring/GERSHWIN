@@ -17,6 +17,8 @@ us['midiPath'] = midipath
 """
 INITIATING NOTES
 """
+B3 = note.Note("B3", type ='quarter')
+
 C = note.Note("C4", type = "quarter")
 D = note.Note("D4", type='quarter')
 E = note.Note("E4", type='quarter')
@@ -76,6 +78,20 @@ Ebminor_c = chord.Chord([Eb, Gb, Bb], type='quarter')
 Gbminor_c = chord.Chord([Gb, A, Db5], type='quarter')
 Abminor_c = chord.Chord([Ab, B, Eb5], type='quarter')
 Bbminor_c = chord.Chord([Bb, Db5, F5], type='quarter')
+
+#diminished chords
+B_dim_c = chord.Chord([B3, D, F], type='quarter')
+C_dim_c = chord.Chord([C, Eb, Gb], type='quarter')
+Db_dim_c = chord.Chord([Db, E, G], type ='quarter')
+D_dim_c = chord.Chord([D, F, Ab], type='quarter')
+Eb_dim_c = chord.Chord([Eb, Gb, A], type='qaurter')
+E_dim_c = chord.Chord([E, G, Bb], type='quarter')
+F_dim_c = chord.Chord([F, Ab, Cb5], type='quarter')
+Gb_dim_c = chord.Chord([Gb, A, C5], type='quarter')
+G_dim_c = chord.Chord([G, Bb, Db5], type='quarter')
+Ab_dim_c = chord.Chord([Ab, B, D5], type='quarter')
+A_dim_c = chord.Chord([A, C, Eb5], type='quarter')
+Bb_dim_c = chord.Chord([Bb, Db5, E5], type='quarter')
 
 #scales:major
 Cmajor_s = [C, D, E, F, G, A, B, C5]
@@ -138,6 +154,37 @@ Fminor_cp = [Fminor_c, Dbmajor_c, Abmajor_c, Ebmajor_c]
 Gbminor_cp = [Gbminor_c, Dmajor_c, Amajor_c, Emajor_c]
 Gminor_cp = [Gminor_c, Ebmajor_c, Bbmajor_c, Fmajor_c]
 Abminor_cp = [Abminor_c, Emajor_c, Bmajor_c, Gbmajor_c]
+
+#jazz
+#ii_V_I
+Cmajor_cp_j = [Dminor_c, Gmajor_c, Cmajor_c]
+Dbmajor_cp_j = [Ebminor_c, Abmajor_c, Dbmajor_c]
+Dmajor_cp_j = [Eminor_c, Amajor_c, Dmajor_c]
+Ebmajor_cp_j = [Fminor_c,Bbmajor_c, Ebmajor_c]
+Emajor_cp_j = [Gbminor_c, Bmajor_c, Emajor_c]
+Fmajor_cp_j = [Gminor_c, Cmajor_c, Fmajor_c]
+Gbmajor_cp_j = [Abminor_c, Dbmajor_c, Gbmajor_c]
+Gmajor_cp_j = [Aminor_c, Dmajor_c, Gmajor_c]
+Abmajor_cp_j = [Bbminor_c,Ebmajor_c, Abmajor_c]
+Amajor_cp_j = [Bminor_c, Emajor_c, Amajor_c]
+Bbmajor_cp_j = [Cminor_c, Fmajor_c,Bbmajor_c]
+Bmajor_cp_j = [Dbminor_c, Gbmajor_c, Bmajor_c]
+
+#II_V_I minor
+Aminor_cp_j = [B_dim_c, Eminor_c, Aminor_c]
+Bbminor_cp_j = [C_dim_c, Fminor_c, Bbminor_c]
+Bminor_cp_j = [Db_dim_c, Gbminor_c, Bminor_c]
+Cminor_cp_j = [D_dim_c, Gminor_c, Cminor_c]
+Dbminor_cp_j = [Eb_dim_c, Abminor_c, Dbminor_c]
+Dminor_cp_j = [E_dim_c, Aminor_c, Dminor_c]
+Ebminor_cp_j = [F_dim_c, Bbminor_c, Ebminor_c]
+Eminor_cp_j = [Gb_dim_c, Bminor_c, Eminor_c]
+Fminor_cp_j = [G_dim_c, Cminor_c, Fminor_c]
+Gbminor_cp_j = [Ab_dim_c, Dbminor_c, Gbminor_c]
+Gminor_cp_j = [A_dim_c, Dminor_c, Gminor_c]
+Abminor_cp_j = [Bb_dim_c, Ebminor_c, Abminor_c]
+
+
 
 def build_jazz(num_syl, key, new_song):
     if key == True:
