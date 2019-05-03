@@ -6,7 +6,11 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 ### The Process
 
-_timeline here_
+_Front End_
+
+mock up --> sketches --> program now
+
+_Back End_
 
 ### Successes & Failures
 
