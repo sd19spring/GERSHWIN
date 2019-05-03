@@ -1,6 +1,6 @@
 ### How It Works
 
-_insert UML Diagram_
+![](uml_diagram.jpg)
 
 Input text is broken down into the number of syllables, which correlates with the number of notes generated, and is analyzed via sentiment analysis. If the lyrics input have a happeir sentiment, the song is played in a major key, while if the song has a more sad tone, the song is played in a minor key. 
 
