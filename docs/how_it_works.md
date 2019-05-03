@@ -1,4 +1,4 @@
-## How It Works
+### How It Works
 
 _insert UML Diagram_
 
