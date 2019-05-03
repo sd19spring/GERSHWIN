@@ -1,8 +1,7 @@
-## Our Project
+### Our Project
 
-You can use the [editor on GitHub](https://github.com/vmwyatt/gershwin.music.generator/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
-_insert a project description here_
+Have you ever had a lyric running through your head, but just couldn’t find a melody to match? Now with Gershwin™ you can type in the lyric, select a genre, and listen for your own custom made random tune! Gershwin™ will take your lyric, analyze its tone, and return a melody in a key to match, in your chosen genre. 
 
 _insert a video of the project working here_
 
