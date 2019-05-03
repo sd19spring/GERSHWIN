@@ -124,6 +124,9 @@ Bbminor_s = [Bb, C5, Db5, Eb5, F5, Gb5, Ab5, Bb5]
 bluesmajor_s = [C, D, Eb, E, G, A]
 bluesminor_s = [C, Eb, F, Gb, G, Bb, C5]
 
+bluesmajor_s_Gmajor = [G, A, Bb, B, D5, E5]
+bluesmajor_s_Fminor = [F, Ab, Bb, B, C5, Eb5]
+
 #chord progressions
 
 #pop
@@ -224,6 +227,25 @@ Ab_7 = chord.Chord([Ab, C5, Eb5, Gb5], type='quarter')
 rb_cp = [Fminor_9, Bb_7, Ebminor_9, Ab_7]
 rb_minor = [Fminor_9, Ebminor_9,Eminor_c,Aminor_c]
 rb_major = [Bb_7, Ab_7, Gbmajor_c,Fmajor_c]
+
+#instruments
+#pop
+piano = instument.Piano()
+guitar = instrument.Guitar()
+
+#rock
+electric_guitar = instument.ElectricGuitar()
+electric_bass = instrument.ElectricBass()
+
+#jazz
+alto_sax = instrument.AltoSaxophone()
+baritone_sax = instrument.BaritoneSaxophone()
+trumpet = instrument.Trumpet()
+
+#r&b
+#electric bass
+#piano
+organ = instrument.Organ()
 
 def build_jazz(num_syl, key, new_song):
     major = [bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s,
