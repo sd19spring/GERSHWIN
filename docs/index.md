@@ -21,4 +21,4 @@ _insert a video of the project working here_
 
 
 
-Made with <3 at Olin College
+Made with :heart: at Olin College
