@@ -8,7 +8,9 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 _Front End_
 
-mock up --> sketches --> program now
+![](mock_up.jpg) 
+
+--> sketches --> program now
 
 _Back End_
 
