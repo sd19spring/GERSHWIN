@@ -230,11 +230,11 @@ rb_major = [Bb_7, Ab_7, Gbmajor_c,Fmajor_c]
 
 #instruments
 #pop
-piano = instument.Piano()
+piano = instrument.Piano()
 guitar = instrument.Guitar()
 
 #rock
-electric_guitar = instument.ElectricGuitar()
+electric_guitar = instrument.ElectricGuitar()
 electric_bass = instrument.ElectricBass()
 
 #jazz
