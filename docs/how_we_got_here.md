@@ -1,6 +1,8 @@
 ## How We Got Here
 
-_concept map_
+It all started with a whiteboard, post-its, and some sharpies. We started ideating what features we would want in a music generator, and ended up with the following concept: 
+
+![](concept_map.jpg)
 
 ### The Process
 
