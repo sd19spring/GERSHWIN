@@ -1,7 +1,7 @@
 ### Meet the Team
 
 ## Annie Chu
-
+[Annie](/pictures/annie.jpg)
 Annie is a first year at Olin majoring in Electrical and Computer Engineering
 
 ## Joanna Mei
