@@ -14,5 +14,5 @@ Joanna is a sophomore at Babson majoring in Business
 Eriel is a first year at Olin majoring in Engineering with a Concentration in Mathematics
 
 ## Madi Wyatt
-![](madi.jpg)
+![](madi.JPG)
 Madi is a sophomore at Olin studying Mechanical Engineering with a self-driven focus in Aerospace Engineering
