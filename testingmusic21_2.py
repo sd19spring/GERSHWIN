@@ -221,8 +221,9 @@ Ebminor_9 = chord.Chord([Eb, Gb, Bb, Db5, F5], type='quarter')
 Ab_7 = chord.Chord([Ab, C5, Eb5, Gb5], type='quarter')
 
 #chord progression
-rnb_cp = [Fminor_9, Bb_7, Ebminor_9, Ab_7]
-
+rb_cp = [Fminor_9, Bb_7, Ebminor_9, Ab_7]
+rb_minor = [Fminor_9, Ebminor_9,Eminor_c,Aminor_c]
+rb_major = [Bb_7, Ab_7, Gbmajor_c,Fmajor_c]
 
 def build_jazz(num_syl, key, new_song):
     major = [bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s,
@@ -276,11 +277,68 @@ def build_pop(num_syl, key, new_song):
 
     return new_song
 
+def build_rb(num_syl, key, new_song):
+    if key == True:
+        base = rb_major
+        base1 = rb_minor
+    if key == False:
+        base = rb_minor
+        base1 = rb_major
+
+    change = [-1,1]
+    start_chord = random.randrange(0, len(base)-1)
+    new_song.append(base[start_chord])
+
+    for i in range(0,int(num_syl/2)):
+        start_chord = random.choice(base)
+        start_chord1 = random.choice(base1)
+        new_song.repeatAppend(start_chord,1)
+        new_song.repeatAppend(start_chord1,1)
+    if num_syl % 2 != 0:
+        end_chord = random.choice(base)
+        new_song.repeatAppend(end_chord,1)
+    return new_song
+
+def build_rock(num_syl, key, new_song):
+    major = [Cmajor_cp_r, Dbmajor_cp_r, Dbmajor_cp_r, Ebmajor_cp_r, Emajor_cp_r, Fmajor_cp_r, Gbmajor_cp_r, Gmajor_cp_r, Abmajor_cp_r, Amajor_cp_r, Bbmajor_cp_r, Bmajor_cp_r]
+    minor = [Cminor_cp_r, Dbminor_cp_r, Dminor_cp_r, Ebminor_cp_r, Eminor_cp_r, Fminor_cp_r, Gbminor_cp_r, Gminor_cp_r , Abminor_cp_r, Aminor_cp_r, Bbminor_cp_r, Bminor_cp_r]
+    if key == True:
+        base = random.choice(major)
+    if key == False:
+        base = random.choice(minor)
+
+    change = [-1,1]
+    start_chord = random.randrange(0, len(base)-1)
+    new_song.append(base[start_chord])
+
+    for i in range(0,num_syl):
+        delt = random.choice(change)
+        start_chord = start_chord+delt
+
+        if start_chord < 0 or start_chord > len(base)-1:
+            start_chord = random.choice(range(0,len(base)-1))
+
+        new_song.repeatAppend(base[start_chord],1)
+
+    return new_song
+
+
+
 def choices(num_syl,key,new_song):
     if fw.jazz.check_clicked(pygame.event.get()) == True:
         return build_jazz(num_syl,key,new_song)
     elif fw.pop.check_clicked(pygame.event.get()) == True:
         return build_pop(num_syl,key,new_song)
+    elif fw.rb.check_clicked(pygame.event.get()) == True:
+        return build_rb(num_syl,key,new_song)
+    elif fw.rock.check_clicked(pygame.event.get()) == True:
+        return build_rock(num_syl,key,new_song)
+    elif fw.random.check_clicked(pygame.event.get()) == True:
+        pick = random.choice(fw.g_list[0:3])
+        if pick == 'J A Z Z': return build_jazz(num_syl,key,new_song)
+        if pick == 'R & B': return build_rb(num_syl,key,new_song)
+        if pick == 'P O P': return build_pop(num_syl,key,new_song)
+        if pick == 'R O C K': return build_rock(num_syl,key,new_song)
 
 def input_to_key(i):
     sent = SentimentIntensityAnalyzer()
@@ -291,8 +349,8 @@ def input_to_key(i):
         return True
 
 def input_def():
-    i = input("Name your lyric: ")
-    num_syl = sc.phrase_syllables(i)
+    i = fw.glyrics
+    num_syl = sc.phrase_syllables(i)-1
     key = input_to_key(i)
     print(key)
     new_song = stream.Stream()
