@@ -9,9 +9,13 @@ All unattributed code has been written by Annie, Madi, Eriel, and Joanna.
 ## Built Using
 
 [The CMU Pronunciation Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) - Used to count lyric syllables
+
 [music21](https://web.mit.edu/music21/) - Used to generate notes
+
 [MuseScore](https://musescore.org/en) - Used to produce sheet music
+
 [TiMidity++](http://timidity.sourceforge.net/) - Used to play MIDI track
+
 [NLTK](https://www.nltk.org/) - Used for sentiment analysis of lyrics
 
 
