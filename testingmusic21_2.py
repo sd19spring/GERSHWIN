@@ -346,16 +346,16 @@ def build_rock(num_syl, key, new_song):
 
 
 
-def choices(num_syl,key,new_song):
-    if fw.jazz.check_clicked(pygame.event.get()) == True:
+def choices(num_syl,key,new_song,buttons):
+    if buttons['jazz'].clicked == True:
         return build_jazz(num_syl,key,new_song)
-    elif fw.pop.check_clicked(pygame.event.get()) == True:
+    elif buttons['pop'].clicked  == True:
         return build_pop(num_syl,key,new_song)
-    elif fw.rb.check_clicked(pygame.event.get()) == True:
+    elif buttons['rb'].clicked  == True:
         return build_rb(num_syl,key,new_song)
-    elif fw.rock.check_clicked(pygame.event.get()) == True:
+    elif buttons['rock'].clicked  == True:
         return build_rock(num_syl,key,new_song)
-    elif fw.random.check_clicked(pygame.event.get()) == True:
+    elif buttons['random'].clicked  == True:
         pick = random.choice(fw.g_list[0:3])
         if pick == 'J A Z Z': return build_jazz(num_syl,key,new_song)
         if pick == 'R & B': return build_rb(num_syl,key,new_song)
@@ -370,15 +370,13 @@ def input_to_key(i):
     else:
         return True
 
-def input_def():
-    fw.main(60,fw.Title())
-    i = fw.input_text
-    num_syl = sc.phrase_syllables(i)
-    print(num_syl)
-    key = input_to_key(i)
+def generate_song(input, buttons):
+    #i = fw.input_text
+    num_syl = sc.phrase_syllables(input)
+    key = input_to_key(input)
     new_song = stream.Stream()
-    new_song = choices(num_syl,key,new_song)
+    new_song = choices(num_syl,key,new_song,buttons)
     new_song.show('midi')
-    new_song.show()
+    #new_song.show()
 
-input_def()
+#input_def()

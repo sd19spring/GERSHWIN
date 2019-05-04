@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from sys import exit
+from testingmusic21_2 import *
 #input_text= ''
 """
 DEFINING SCREEN SIZE
@@ -160,6 +161,7 @@ class Scene():
     def __init__(self):
         self.next = self
         self.Buttons= []
+        self.generate_music = False
         #self.lyric = glyrics
 
     def render(self, screen):
@@ -182,23 +184,23 @@ class Title(Scene):
     def __init__(self):
         Scene.__init__(self)
 
-
     def Update(self):
         pass
 
     def ProcessInput(self, events, pressed_keys):
-                for event in events:
-                    if event.type == pygame.MOUSEBUTTONDOWN:
-                        (a, b) = pygame.mouse.get_pos()
-                        if a>650 and b>610 and a<950 and b<680:
-                        # Move to the next scene when the user pressed Enter
-                            self.SwitchToScene(Output())
-                jazz.check_clicked(events)
-                rb.check_clicked(events)
-                pop.check_clicked(events)
-                rock.check_clicked(events)
-                random.check_clicked(events)
-                generate.check_clicked(events)
+        jazz.check_clicked(events)
+        rb.check_clicked(events)
+        pop.check_clicked(events)
+        rock.check_clicked(events)
+        random.check_clicked(events)
+        generate.check_clicked(events)
+
+        for event in events:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                (a, b) = pygame.mouse.get_pos()
+                if a>650 and b>610 and a<950 and b<680:
+                # Move to the next scene when the user pressed Enter
+                    self.SwitchToScene(Output())
 
     def Render(self, screen, input_box):
 
@@ -233,9 +235,12 @@ class Output(Scene):
     '''
     def __init__(self):
         Scene.__init__(self)
+        self.generate_music = True
 
     def Update(self):
-        pass
+        if self.generate_music == True:
+            generate_song(input_text, genre_buttons)
+            self.generate_music = False
 
     def ProcessInput(self, events, pressed_keys):
         for event in events:
@@ -243,11 +248,18 @@ class Output(Scene):
                 (a, b) = pygame.mouse.get_pos()
                 if a>650 and b>610 and a<950 and b<680:
                 # Move to the next scene when the user pressed Enter
+                    # Resets all the buttons and the input text
+                    global input_text
+                    input_text = ''
+                    for button in genre_buttons.values():
+                        button.clicked = False
+
                     self.SwitchToScene(Title())
+
             back.check_clicked(events)
 
     def Render(self, screen, input_box=None):
-
+        print(self.generate_music)
         #create black screen
         screen.fill(darkgreen)
 
@@ -317,6 +329,7 @@ class Button():
         print("The {} button was clicked!".format(self.imgname))
 
 
+
 class InputBox:
 
     def __init__(self, x, y, w, h, text=''):
@@ -368,6 +381,7 @@ rock = Button('Rock', (150, 70), coords=(936,450))
 random = Button('Random Genre', (150, 70), coords=(1148,450))
 generate = Button('Generate Music', (300, 70), coords=(650,610))
 back = Button('Go Back', (300, 70), coords=(650,610))
+genre_buttons = {'jazz':jazz, 'rb':rb, 'pop':pop, 'rock':rock, 'random':random}
 #------------------------------------------------------------------#
 
 
@@ -407,6 +421,7 @@ def main(fps, starting_scene):
                     quit_attempt = True
                 elif event.key == pygame.K_F4 and alt_pressed:
                     quit_attempt = True
+
             input_box.handle_event(event)
 
             if quit_attempt:
@@ -414,13 +429,11 @@ def main(fps, starting_scene):
             else:
                 filtered_events.append(event)
 
-
         active_scene.ProcessInput(filtered_events, pressed_keys)
-        active_scene.Update()
         active_scene.Render(screen, input_box)
+        active_scene.Update()
 
         active_scene = active_scene.next
-
         pygame.display.flip()
         clock.tick(fps)
 
