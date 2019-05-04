@@ -259,7 +259,7 @@ class Output(Scene):
             back.check_clicked(events)
 
     def Render(self, screen, input_box=None):
-        print(self.generate_music)
+        #print(self.generate_music)
         #create black screen
         screen.fill(darkgreen)
 

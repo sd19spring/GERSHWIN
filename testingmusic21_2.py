@@ -311,7 +311,7 @@ def build_rb(num_syl, key, new_song):
     start_chord = random.randrange(0, len(base)-1)
     new_song.append(base[start_chord])
 
-    for i in range(0,int(num_syl/2)):
+    for i in range(1,int(num_syl/2)):
         start_chord = random.choice(base)
         start_chord1 = random.choice(base1)
         new_song.repeatAppend(start_chord,1)
@@ -333,7 +333,7 @@ def build_rock(num_syl, key, new_song):
     start_chord = random.randrange(0, len(base)-1)
     new_song.append(base[start_chord])
 
-    for i in range(0,num_syl):
+    for i in range(0,num_syl-1):
         delt = random.choice(change)
         start_chord = start_chord+delt
 
