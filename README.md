@@ -6,22 +6,22 @@ GERSHWIN is a music generator software that takes lyrical and genre input and ou
 ## Getting Started
 
 Download relevant python packages:
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 Download MuseScore python library:
-'''
+```
 sudo snap install musescore
-'''
+```
 or
-'''
+```
 install AppImage on the MuseScore website
-'''
+```
 
 Download MIDI Player Timidity:
-'''
+```
 sudo apt-get install timidity
-'''
+```
 
 To use MuseScore with music21, connect musicxmlPath key to application path
