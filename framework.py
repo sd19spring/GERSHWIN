@@ -239,7 +239,8 @@ class Output(Scene):
 
     def Update(self):
         if self.generate_music == True:
-            generate_song(input_text, genre_buttons)
+            self.new_song = generate_song(input_text, genre_buttons)
+            play_song(self.new_song)
             self.generate_music = False
 
     def ProcessInput(self, events, pressed_keys):
@@ -255,7 +256,7 @@ class Output(Scene):
                         button.clicked = False
                     self.SwitchToScene(Title())
                 elif a>650 and a<950 and b>80 and b<150:
-                    show_song(input_text, genre_buttons)
+                    show_song(self.new_song)
 
             back.check_clicked(events)
 

@@ -376,13 +376,12 @@ def generate_song(input, buttons):
     key = input_to_key(input)
     new_song = stream.Stream()
     new_song = choices(num_syl,key,new_song,buttons)
-    new_song.show('midi')
+    #new_song.show('midi')
+    return new_song
     #new_song.show()
-def show_song(input, buttons):
-    num_syl = sc.phrase_syllables(input)
-    key = input_to_key(input)
-    new_song = stream.Stream()
-    new_song = choices(num_syl,key,new_song,buttons)
+def play_song(new_song):
+    new_song.show('midi')
+def show_song(new_song):
     #new_song.show('midi')
     new_song.show()
 
