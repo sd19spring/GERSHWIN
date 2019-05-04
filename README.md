@@ -41,3 +41,10 @@ sudo apt-get install timidity
 ```
 
 To use MuseScore with music21, connect musicxmlPath key to application path
+
+## To Run
+
+In order to run GERSHWIN, make sure all applicable software has been downloaded, then run the follwing file:
+```
+ framework.py
+```
