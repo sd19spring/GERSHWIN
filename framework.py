@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from sys import exit
-glyrics = input("Write a lyric: ")
+#input_text= ''
 """
 DEFINING SCREEN SIZE
 """
@@ -99,14 +99,9 @@ def title_desc(screen):
     desc_rect = desc.get_rect(center=(s_width/2, s_height/4))
     screen.blit(desc,desc_rect)
 
-def step1(a,b,screen):
-
-    if a > 300 and a < 1300 and b > (s_height/2.5) and b < (s_height/2.5)+60:
-        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],0)
-
-    else:
-        pygame.draw.rect(screen,white,[300, s_height/2.5,1000,60],3)
-
+def step1(screen, input_box):
+    input_box.update()
+    input_box.draw(screen)
     step1 = smallfont.render('S T E P  1 : i n p u t  a  l y r i c', True, white)
     screen.blit(step1,(300,s_height/2.8))
 
@@ -165,7 +160,7 @@ class Scene():
     def __init__(self):
         self.next = self
         self.Buttons= []
-        self.lyric = glyrics
+        #self.lyric = glyrics
 
     def render(self, screen):
         """
@@ -205,7 +200,7 @@ class Title(Scene):
                 random.check_clicked(events)
                 generate.check_clicked(events)
 
-    def Render(self, screen):
+    def Render(self, screen, input_box):
 
         #create black screen
         screen.fill(darkblue)
@@ -225,8 +220,8 @@ class Title(Scene):
         ran = list(range(300, s_width-300, 212))
 
         (a, b) = pygame.mouse.get_pos()
-        #step 1
-        step1(a,b,screen)
+
+        step1(screen, input_box)
         step2(a,b,screen)
         step3(a,b,screen)
         #geometric points
@@ -251,14 +246,14 @@ class Output(Scene):
                     self.SwitchToScene(Title())
             back.check_clicked(events)
 
-    def Render(self, screen):
+    def Render(self, screen, input_box=None):
 
         #create black screen
         screen.fill(darkgreen)
 
         #creating title
 
-        title = smallfont.render(self.lyric, True, white)
+        title = smallfont.render(input_text, True, white)
         text_rect = title.get_rect(center=(s_width/2, s_height/4))
         screen.blit(title,text_rect)
 
@@ -322,6 +317,48 @@ class Button():
         print("The {} button was clicked!".format(self.imgname))
 
 
+class InputBox:
+
+    def __init__(self, x, y, w, h, text=''):
+        self.rect = pygame.Rect(x, y, w, h)
+        self.color = white
+        self.text = text
+        self.txt_surface = medfont.render(text, True, white)
+        self.active = False
+
+    def handle_event(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # If the user clicked on the input_box rect.
+            if self.rect.collidepoint(event.pos):
+                # Toggle the active variable.
+                self.active = not self.active
+            else:
+                self.active = False
+            # Change the current color of the input box.
+            self.color = grey if self.active else white
+        if event.type == pygame.KEYDOWN:
+            if self.active:
+                #if event.key == pygame.K_RETURN:
+                #    global input_text
+                #    input_text = self.text
+                if event.key == pygame.K_BACKSPACE:
+                    self.text = self.text[:-1]
+                else:
+                    self.text += event.unicode
+                # Re-render the text.
+                self.txt_surface = medfont.render(self.text, True, white)
+
+    def update(self):
+        # Resize the box if the text is too long.
+        global input_text
+        input_text = self.text
+
+    def draw(self, screen):
+        # Blit the text.
+        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))
+        # Blit the rect.
+        pygame.draw.rect(screen, self.color, self.rect, 2)
+
 """Create buttons for each genre, and to generate the song."""
    #TODO: Change the clicked action according to button.
 jazz = Button('Jazz', (150, 70), coords=(300,450))
@@ -345,7 +382,7 @@ def main(fps, starting_scene):
 
     #managing how fast screen updates
     clock = pygame.time.Clock()
-
+    input_box = InputBox(300, s_height/2.5,1000,60)
     """
     main
     """
@@ -357,9 +394,12 @@ def main(fps, starting_scene):
         # Event filtering
         filtered_events = []
         for event in pygame.event.get():
+
             quit_attempt = False
             if event.type == pygame.QUIT:
                 quit_attempt = True
+
+
             elif event.type == pygame.KEYDOWN:
                 alt_pressed = pressed_keys[pygame.K_LALT] or \
                               pressed_keys[pygame.K_RALT]
@@ -367,15 +407,17 @@ def main(fps, starting_scene):
                     quit_attempt = True
                 elif event.key == pygame.K_F4 and alt_pressed:
                     quit_attempt = True
+            input_box.handle_event(event)
 
             if quit_attempt:
                 active_scene.Terminate()
             else:
                 filtered_events.append(event)
 
+
         active_scene.ProcessInput(filtered_events, pressed_keys)
         active_scene.Update()
-        active_scene.Render(screen)
+        active_scene.Render(screen, input_box)
 
         active_scene = active_scene.next
 

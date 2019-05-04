@@ -263,7 +263,7 @@ def build_jazz(num_syl, key, new_song):
     start_note = random.randrange(0, len(base)-1)
     new_song.append(base[start_note])
 
-    for i in range(0, num_syl):
+    for i in range(0, num_syl-1):
         delt = random.choice(change)
         start_note = start_note+delt
 
@@ -288,7 +288,7 @@ def build_pop(num_syl, key, new_song):
     start_chord = random.randrange(0, len(base)-1)
     new_song.append(base[start_chord])
 
-    for i in range(0,num_syl):
+    for i in range(0,num_syl-1):
         delt = random.choice(change)
         start_chord = start_chord+delt
 
@@ -371,12 +371,12 @@ def input_to_key(i):
         return True
 
 def input_def():
-    i = fw.glyrics
-    num_syl = sc.phrase_syllables(i)-1
-    key = input_to_key(i)
-    print(key)
-    new_song = stream.Stream()
     fw.main(60,fw.Title())
+    i = fw.input_text
+    num_syl = sc.phrase_syllables(i)
+    print(num_syl)
+    key = input_to_key(i)
+    new_song = stream.Stream()
     new_song = choices(num_syl,key,new_song)
     new_song.show('midi')
     new_song.show()
