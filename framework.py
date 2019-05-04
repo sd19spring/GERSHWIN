@@ -253,10 +253,12 @@ class Output(Scene):
                     input_text = ''
                     for button in genre_buttons.values():
                         button.clicked = False
-
                     self.SwitchToScene(Title())
+                elif a>650 and a<950 and b>80 and b<150:
+                    show_song(input_text, genre_buttons)
 
             back.check_clicked(events)
+
 
     def Render(self, screen, input_box=None):
         #print(self.generate_music)
@@ -279,12 +281,18 @@ class Output(Scene):
         s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
         screen.blit(step3,s3_rect)
 
+        if a>650 and a<950 and b > (s_height/9) and b < (s_height/9)+60:
+            pygame.draw.rect(screen,white,[650, s_height/9,300,60],0)
+            step4 = smallfont.render('C L I C K  F O R  S H E E T  M U S I C !', True, darkgreen)
+        else:
+            pygame.draw.rect(screen,white,[650, s_height/9,300,60],3)
+            step4 = smallfont.render('C L I C K  F O R  S H E E T  M U S I C !', True, white)
+        s4_rect = step4.get_rect(center=(s_width/2, s_height/6.9))
+        screen.blit(step4,s4_rect)
+
         make_piano(screen)
         make_shapes(screen)
 
-        # pygame.draw.rect(screen,white,[300, s_height/2.5,1000,200],3)
-        # out = smallfont.render('v i s u a l  o u t p u t  w i l l  g o  h e r e !', True, white)
-        # screen.blit(out,(650,s_height/2))
 
 class Button():
     '''
@@ -381,6 +389,7 @@ rock = Button('Rock', (150, 70), coords=(936,450))
 random = Button('Random Genre', (150, 70), coords=(1148,450))
 generate = Button('Generate Music', (300, 70), coords=(650,610))
 back = Button('Go Back', (300, 70), coords=(650,610))
+sheetmusic = Button('Sheet Music', (300, 70), coords=(650, 80))
 genre_buttons = {'jazz':jazz, 'rb':rb, 'pop':pop, 'rock':rock, 'random':random}
 #------------------------------------------------------------------#
 
