@@ -1,9 +1,9 @@
 <body>
     <section class="page-header">
-      <a href="./howto" class="btn">How to Run</a>
-      <a href="./aboutUs" class="btn">About Us</a>
-      <a href="./techPage" class="btn">System Architecture</a>
-      <a href="./video" class="btn">Video</a>
+      <a href="how_to_use.md" class="btn">How to Use</a>
+      <a href="./aboutUs" class="btn">How it Works</a>
+      <a href="./techPage" class="btn">How We Got Here</a>
+      <a href="./video" class="btn">Meet the Team</a>
     </section>
 </body>
 
