@@ -1,4 +1,5 @@
 import pygame
+import random as rd
 from pygame.locals import *
 from sys import exit
 from testingmusic21_2 import *
@@ -22,6 +23,7 @@ darkred = (178, 34, 34)
 darkgreen = (25, 100, 50)
 darkblue = (25, 50, 150)
 grey = (128, 128, 128)
+
 """
 DEFINING FONTS
 """
@@ -36,7 +38,7 @@ medfont = pygame.font.SysFont(font, 23)
 GENRE
 '''
 g_list = ["J A Z Z", "R & B", "P O P", "R O C K", "R A N D O M"]
-
+notesize = 10
 '''
 AESTHETIC EXTRAS
 '''
@@ -114,10 +116,6 @@ def step2(a,b,screen):
         genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
         screen.blit(genre,genre_rect)
 
-         #step 2
-        #x = 0, 1...
-        #i = 300, 512...
-        #212x+300=i -> (i-300)/212 = x
     for i in ran:
         if a>i and a<i+150 and b>(s_height/1.75) and b < (s_height/1.75)+60:
             pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60],0)
@@ -153,6 +151,29 @@ def check_quit(events):
         if event.type == pygame.QUIT:
             quittin_time = True
     return quittin_time
+
+class Note:
+    '''
+    Class to keep track of a note's location + vector
+    '''
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        self.dx = 0
+        self.dy = 0
+
+def make_note():
+    '''
+    function to make moving notes for background
+    '''
+    note = Note()
+    note.x = rd.randrange(notesize, s_width-notesize)
+    note.y = rd.randrange(notesize, s_height-notesize)
+    note.dx = rd.choice([0.5, -0.5])
+    note.dy = rd.choice([0.5, -0.5])
+    note.color = white
+
+    return note
 
 class Scene():
     """
@@ -229,6 +250,7 @@ class Title(Scene):
         #geometric points
         make_shapes(screen)
 
+
 class Output(Scene):
     '''
     Creating Scene subclass for output scene
@@ -262,9 +284,29 @@ class Output(Scene):
 
 
     def Render(self, screen, input_box=None):
-        #print(self.generate_music)
+        note_list = []
+
+        for i in range(rd.randrange(2,10)):
+            note = make_note()
+            note_list.append(note)
+
+        for note in note_list:
+            note.x += note.dx
+            note.y += note.dy
+
+            if note.y > s_height-notesize or note.y < notesize:
+                note.dy *= -0.5
+
+            if note.x < s_width-notesize or note.x < notesize:
+                note.dx *= -0.5
+
         #create black screen
         screen.fill(darkgreen)
+
+        #ncreate moving notes
+        for note in note_list:
+            pygame.draw.ellipse(screen, note.color,[note.x, note.y, 25, 25], 0)
+            pygame.draw.line(screen, note.color,(note.x+20,note.y+10),(note.x+20,note.y-50),5)
 
         #creating title
 
