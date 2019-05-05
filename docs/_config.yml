@@ -15,3 +15,5 @@
       <a href="./video" class="btn">Video</a>
 
     </section>
+
+theme: jekyll-theme-cayman
