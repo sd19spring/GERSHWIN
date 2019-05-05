@@ -1,13 +1,3 @@
-<body>
-    <section class="page-header">
-      <a href="how_to_use.md" class="btn">How to Use</a>
-      <a href="./aboutUs" class="btn">How it Works</a>
-      <a href="./techPage" class="btn">How We Got Here</a>
-      <a href="./video" class="btn">Meet the Team</a>
-    </section>
-</body>
-
-
 # Our Project
 
 Have you ever had a lyric running through your head, but just couldn’t find a melody to match? Now with Gershwin™ you can type in the lyric, select a genre, and listen for your own custom made random tune! Gershwin™ will take your lyric, analyze its tone, and return a melody in a key to match, in your chosen genre. 
@@ -27,7 +17,7 @@ Have you ever had a lyric running through your head, but just couldn’t find a 
 
 ## [Meet the Team](meet_the_team.md)
 
-[testing](testing.html)
+
 
 
 
