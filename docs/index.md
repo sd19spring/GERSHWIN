@@ -1,3 +1,15 @@
+<body>
+    <section class="page-header">
+      <h1 class="project-name"><a href="./" class="page-header-text">SMART CALENDAR</a></h1>
+      <h2 class="project-tagline"></h2>
+      <a href="./howto" class="btn">How to Run</a>
+      <a href="./aboutUs" class="btn">About Us</a>
+      <a href="./techPage" class="btn">System Architecture</a>
+      <a href="./video" class="btn">Video</a>
+    </section>
+</body>
+
+
 # Our Project
 
 Have you ever had a lyric running through your head, but just couldn’t find a melody to match? Now with Gershwin™ you can type in the lyric, select a genre, and listen for your own custom made random tune! Gershwin™ will take your lyric, analyze its tone, and return a melody in a key to match, in your chosen genre. 
