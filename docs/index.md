@@ -1,7 +1,5 @@
 <body>
     <section class="page-header">
-      <h1 class="project-name"><a href="./" class="page-header-text">SMART CALENDAR</a></h1>
-      <h2 class="project-tagline"></h2>
       <a href="./howto" class="btn">How to Run</a>
       <a href="./aboutUs" class="btn">About Us</a>
       <a href="./techPage" class="btn">System Architecture</a>
