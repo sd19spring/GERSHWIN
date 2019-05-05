@@ -4,8 +4,8 @@ Have you ever had a lyric running through your head, but just couldn’t find a 
 
 ![](gershwin.png)
 
-<center> 
+<p align="center">
 ##[How to Use](how_to_use.md) [How It Works](how_it_works.md) [How We Got Here](how_we_got_here.md) [Meet the Team](meet_the_team.md)
-</center>
+</p>
 
 Made with <3 at Olin College
