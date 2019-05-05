@@ -4,7 +4,9 @@
 
 ### Front End
 
-Pygame stuffs
+On the front end of our program, the bulk of our work is defined by several classes: a Scene parent class, a Title child class, an Output child class, and an unrealted Button class. Within the Scene class there are instructions for constant between the two scenes: namely, switching between scenes when a particular area is clicked, taking in input from the controls, and generating images to render onto the screen. For each scene child class, there are instructions specific to that scene, namely which buttons to check on whether they're clicked, specific rendering instructions for the particular scene, and inputs that each scene will have to take in. The Button class defines the genre and naviagtion buttons, and sends out a notification to the proper scene when they are clicked, as well as writing a message in the terminal to notify the user. 
+
+The front end is then connected to the back end's music generation functions, which allows the program to take the data inputted on the front end, act on it in the back end, and combine the two together back at the front end to generate output that the user will see.
 
 ### Back End
 
