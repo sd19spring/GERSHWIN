@@ -6,13 +6,7 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 ### The Process
 
-_Front End_
-
-![](mock_up.jpg) 
-
---> sketches --> program now
-
-_Back End_
+![](timeline.jpg)
 
 ### Successes & Failures
 
@@ -23,5 +17,5 @@ _Successes_
 
 _Failures_
 
-* Integration within one output area (annie what do you mean)
+* Integration within one output area 
 * Can't match notes to syllable breakdown
