@@ -8,14 +8,6 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 ![](timeline.jpg)
 
-_Front End_
-
-![](mock_up.jpg) 
-
---> sketches --> program now
-
-_Back End_
-
 ### Successes & Failures
 
 _Successes_
@@ -25,5 +17,5 @@ _Successes_
 
 _Failures_
 
-* Integration within one output area (annie what do you mean)
+* Integration within one output area 
 * Can't match notes to syllable breakdown
