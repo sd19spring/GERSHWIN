@@ -6,7 +6,7 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 ### The Process
 
-![](timeline.jpg)
+![](timeline2.jpg)
 
 ### Successes & Failures
 
