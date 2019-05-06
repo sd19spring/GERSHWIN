@@ -170,7 +170,7 @@ class Note:
         self.dx = 0
         self.dy = 0
 rred = rd.randrange(0,255)
-rgreen = rd.randrange(0,255)
+rgreen = rd.randrange(0,25)
 rblue = rd.randrange(0,255)
 rand_color = (rred, rgreen, rblue)
 
@@ -289,43 +289,43 @@ class Output(Scene):
                     for button in genre_buttons.values():
                         button.clicked = False
                     self.SwitchToScene(Title())
-                elif a>650 and a<950 and b>80 and b<150:
+                elif a>650 and a<950 and b>370 and b<440:
                     show_song(self.new_song)
 
             back.check_clicked(events)
 
 
     def Render(self, screen, input_box=None):
-        note_list = []
-
-        for i in range(0, (num_notes()-1)):
-            note = make_note()
-            note_list.append(note)
-
-        for note in note_list:
-            note.x += note.dx
-            note.y += note.dy
-            note.color = colorlist[rd.randrange(0, len(colorlist)-1)]
-            if note.y > s_height-notesize or note.y < notesize:
-                note.dy *= -1
-
-            if note.x < s_width-notesize or note.x < notesize:
-                note.dx *= -1
+        # note_list = []
+        #
+        # for i in range(0, (num_notes()-1)):
+        #     note = make_note()
+        #     note_list.append(note)
+        #
+        # for note in note_list:
+        #     note.x += note.dx
+        #     note.y += note.dy
+        #     note.color = colorlist[rd.randrange(0, len(colorlist)-1)]
+        #     if note.y > s_height-notesize or note.y < notesize:
+        #         note.dy *= -1
+        #
+        #     if note.x < s_width-notesize or note.x < notesize:
+        #         note.dx *= -1
 
         #create black screen
         screen.fill(darkgreen)
 
         #ncreate moving notes
-        for note in note_list:
-            pygame.draw.ellipse(screen, note.color,[note.x, note.y, 25, 25], 0)
-            pygame.draw.line(screen, note.color,(note.x+20,note.y+10),(note.x+20,note.y-50),5)
+        # for note in note_list:
+        #     pygame.draw.ellipse(screen, note.color,[note.x, note.y, 25, 25], 0)
+        #     pygame.draw.line(screen, note.color,(note.x+20,note.y+10),(note.x+20,note.y-50),5)
 
         #creating title
-        maketext(screen,input_text,white,bigfont,s_width/2,s_height/4)
+        maketext(screen,input_text,white,medfont,s_width/2,s_height/4)
         #key
-        maketext(screen,key(),rand_color,medfont,s_width/2,s_height/2)
+        maketext(screen,key(),white,medfont,2*s_width/3,s_height/2)
         #number of notes
-        maketext(screen, str(num_notes()),rand_color, medfont, s_width/3, s_height/2)
+        maketext(screen, str(num_notes())+ ' notes',white, medfont, s_width/3, s_height/2)
         # #testing note identification
         # for note in song_list(self.new_song):
         #     #i = range(400, 1000, 600/len(new_song))
@@ -344,13 +344,13 @@ class Output(Scene):
         s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
         screen.blit(step3,s3_rect)
 
-        if a>650 and a<950 and b > (s_height/9) and b < (s_height/9)+60:
-            pygame.draw.rect(screen,white,[650, s_height/9,300,60],0)
+        if a>650 and a<950 and b > (s_height/2.1) and b < (s_height/2.15)+60:
+            pygame.draw.rect(screen,white,[650, s_height/2.15,300,60],0)
             step4 = smallfont.render('C L I C K  F O R  S H E E T  M U S I C !', True, darkgreen)
         else:
-            pygame.draw.rect(screen,white,[650, s_height/9,300,60],3)
+            pygame.draw.rect(screen,white,[650, s_height/2.15,300,60],3)
             step4 = smallfont.render('C L I C K  F O R  S H E E T  M U S I C !', True, white)
-        s4_rect = step4.get_rect(center=(s_width/2, s_height/6.9))
+        s4_rect = step4.get_rect(center=(s_width/2, s_height/2))
         screen.blit(step4,s4_rect)
 
         #make_piano(screen)
