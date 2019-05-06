@@ -3,7 +3,7 @@
 GERSHWIN is a music generator software that takes lyrical and genre input and outputs a melody in audio and visual form (sheet music). GERSHWIN works by taking the lyrical input, counting the number of syllables, and connecting each syllable to a note or chord tied specifically to the determined major or minor key. The output of notes will adhere to standard music convention (so it won't sound like random notes strung together) and a specific genre of music (jazz, pop, R&B, and rock). Artists and music enthusiasts can use this program to get inspiration for song creation.
 
 ## Website
-For more information about this project, check out our [website]!(https://sd19spring.github.io/GERSHWIN/)
+For more information about this project, check out our [website](https://sd19spring.github.io/GERSHWIN/)!
 
 ## Authors
 
