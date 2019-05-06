@@ -3,6 +3,7 @@ import random as rd
 from pygame.locals import *
 from sys import exit
 from testingmusic21_2 import *
+import syllable_counter as sc
 #input_text= ''
 """
 DEFINING SCREEN SIZE
@@ -141,6 +142,12 @@ def key():
     if input_to_key(input_text) == False:
         x = 'Minor Key'
     return x
+def num_notes():
+    number_notes = sc.phrase_syllables(input_text)
+    return number_notes
+
+def get_song_notes():
+    print(new_song)
 #-----------------------------------------
 
 def check_quit(events):
@@ -291,7 +298,7 @@ class Output(Scene):
     def Render(self, screen, input_box=None):
         note_list = []
 
-        for i in range(rd.randrange(2,10)):
+        for i in range(0, (num_notes()-1)):
             note = make_note()
             note_list.append(note)
 
@@ -317,6 +324,15 @@ class Output(Scene):
         maketext(screen,input_text,white,bigfont,s_width/2,s_height/4)
         #key
         maketext(screen,key(),rand_color,medfont,s_width/2,s_height/2)
+        #number of notes
+        maketext(screen, str(num_notes()),rand_color, medfont, s_width/3, s_height/2)
+        # #testing note identification
+        # for note in song_list(self.new_song):
+        #     #i = range(400, 1000, 600/len(new_song))
+        #     for i in range(400, 1000, int(600/len(self.new_song))):
+        #         maketext(screen, str(note), white, medfont, int(i), s_height/1.5)
+        #
+            #i = range(400, 1000, 600/len(new_song))
 
         (a, b) = pygame.mouse.get_pos()
         if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
@@ -490,8 +506,9 @@ def main(fps, starting_scene):
                 filtered_events.append(event)
 
         active_scene.ProcessInput(filtered_events, pressed_keys)
-        active_scene.Render(screen, input_box)
         active_scene.Update()
+        active_scene.Render(screen, input_box)
+        # active_scene.Update()
 
         active_scene = active_scene.next
         pygame.display.flip()

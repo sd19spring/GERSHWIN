@@ -381,8 +381,15 @@ def generate_song(input, buttons):
     #new_song.show()
 def play_song(new_song):
     new_song.show('midi')
+    # for note in new_song:
+    #     print(note.name)
 def show_song(new_song):
     #new_song.show('midi')
     new_song.show()
 
+def song_list(new_song):
+    notes = []
+    for note in new_song:
+        notes.append(note.name)
+    return notes
 #input_def()
