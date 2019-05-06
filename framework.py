@@ -23,7 +23,7 @@ darkred = (178, 34, 34)
 darkgreen = (25, 100, 50)
 darkblue = (25, 50, 150)
 grey = (128, 128, 128)
-
+colorlist = [black, white, brightred, brightgreen, blue, darkred, darkgreen, grey]
 """
 DEFINING FONTS
 """
@@ -161,6 +161,9 @@ class Note:
         self.y = 0
         self.dx = 0
         self.dy = 0
+r = rd.randrange(0,255)
+g = rd.randrange(0,255)
+b = rd.randrange(0,255)
 
 def make_note():
     '''
@@ -171,7 +174,8 @@ def make_note():
     note.y = rd.randrange(notesize, s_height-notesize)
     note.dx = rd.choice([0.5, -0.5])
     note.dy = rd.choice([0.5, -0.5])
-    note.color = white
+    color = (r, g, b)
+    note.color = color
 
     return note
 
@@ -293,12 +297,12 @@ class Output(Scene):
         for note in note_list:
             note.x += note.dx
             note.y += note.dy
-
+            note.color = colorlist[rd.randrange(0, len(colorlist)-1)]
             if note.y > s_height-notesize or note.y < notesize:
-                note.dy *= -0.5
+                note.dy *= -1
 
             if note.x < s_width-notesize or note.x < notesize:
-                note.dx *= -0.5
+                note.dx *= -1
 
         #create black screen
         screen.fill(darkgreen)
