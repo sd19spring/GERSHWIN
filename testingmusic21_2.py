@@ -121,11 +121,11 @@ Gbminor_s = [Gb, Ab, A, B, Db5, D, E, Gb5]
 Abminor_s = [Ab, Bb, B, Db5, Eb5, E5, Gb5, Ab5]
 Bbminor_s = [Bb, C5, Db5, Eb5, F5, Gb5, Ab5, Bb5]
 
-bluesmajor_s = [C, D, Eb, E, G, A]
-bluesminor_s = [C, Eb, F, Gb, G, Bb, C5]
+bluesmajor_s1 = [C, D, Eb, E, G, A]
+bluesminor_s1 = [C, Eb, F, Gb, G, Bb, C5]
 
-bluesmajor_s_Gmajor = [G, A, Bb, B, D5, E5]
-bluesmajor_s_Fminor = [F, Ab, Bb, B, C5, Eb5]
+bluesmajor_s2 = [G, A, Bb, B, D5, E5]
+bluesmajor_s3 = [F, Ab, Bb, B, C5, Eb5]
 
 #chord progressions
 
@@ -248,16 +248,16 @@ trumpet = instrument.Trumpet()
 organ = instrument.Organ()
 
 def build_jazz(num_syl, key, new_song):
-    major = [bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s,
-            Cmajor_cp_j, Dbmajor_cp_j, Dmajor_cp_j, Ebmajor_cp_j, Emajor_cp_j, Fmajor_cp_j, Gbmajor_cp_j, Gmajor_cp_j, Abmajor_cp_j, Amajor_cp_j, Bbmajor_cp_j, Bmajor_cp_j]
-    minor = [bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s,
-            Cminor_cp_j, Dbminor_cp_j, Dminor_cp_j, Ebminor_cp_j, Eminor_cp_j, Fminor_cp_j, Gbminor_cp_j, Gminor_cp_j, Abminor_cp_j, Aminor_cp_j, Bbminor_cp_j, Bminor_cp_j]
+    # major = [bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s, bluesmajor_s,
+    #         Cmajor_cp_j, Dbmajor_cp_j, Dmajor_cp_j, Ebmajor_cp_j, Emajor_cp_j, Fmajor_cp_j, Gbmajor_cp_j, Gmajor_cp_j, Abmajor_cp_j, Amajor_cp_j, Bbmajor_cp_j, Bmajor_cp_j]
+    # minor = [bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s, bluesminor_s,
+    #         Cminor_cp_j, Dbminor_cp_j, Dminor_cp_j, Ebminor_cp_j, Eminor_cp_j, Fminor_cp_j, Gbminor_cp_j, Gminor_cp_j, Abminor_cp_j, Aminor_cp_j, Bbminor_cp_j, Bminor_cp_j]
     if key == True:
         #base = random.choice(major)
-        base = bluesmajor_s
+        base = random.choice([bluesmajor_s1, bluesmajor_s2, bluesmajor_s3])
     if key == False:
         #base = random.choice(minor)
-        base = bluesminor_s
+        base = bluesminor_s1
 
     change = [-1,1]
     start_note = random.randrange(0, len(base)-1)
@@ -311,7 +311,7 @@ def build_rb(num_syl, key, new_song):
     start_chord = random.randrange(0, len(base)-1)
     new_song.append(base[start_chord])
 
-    for i in range(1,int(num_syl/2)):
+    for i in range(0,int(num_syl/2)):
         start_chord = random.choice(base)
         start_chord1 = random.choice(base1)
         new_song.repeatAppend(start_chord,1)
@@ -319,7 +319,7 @@ def build_rb(num_syl, key, new_song):
     if num_syl % 2 != 0:
         end_chord = random.choice(base)
         new_song.repeatAppend(end_chord,1)
-    return new_song
+    return new_song[0:num_syl]
 
 def build_rock(num_syl, key, new_song):
     major = [Cmajor_cp_r, Dbmajor_cp_r, Dbmajor_cp_r, Ebmajor_cp_r, Emajor_cp_r, Fmajor_cp_r, Gbmajor_cp_r, Gmajor_cp_r, Abmajor_cp_r, Amajor_cp_r, Bbmajor_cp_r, Bmajor_cp_r]

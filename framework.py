@@ -296,29 +296,29 @@ class Output(Scene):
 
 
     def Render(self, screen, input_box=None):
-        # note_list = []
-        #
-        # for i in range(0, (num_notes()-1)):
-        #     note = make_note()
-        #     note_list.append(note)
-        #
-        # for note in note_list:
-        #     note.x += note.dx
-        #     note.y += note.dy
-        #     note.color = colorlist[rd.randrange(0, len(colorlist)-1)]
-        #     if note.y > s_height-notesize or note.y < notesize:
-        #         note.dy *= -1
-        #
-        #     if note.x < s_width-notesize or note.x < notesize:
-        #         note.dx *= -1
+        note_list = []
+
+        for i in range(0, (num_notes()-1)):
+            note = make_note()
+            note_list.append(note)
+
+        for note in note_list:
+            note.x += note.dx
+            note.y += note.dy
+            note.color = colorlist[rd.randrange(0, len(colorlist)-1)]
+            if note.y > s_height-notesize or note.y < notesize:
+                note.dy *= -1
+
+            if note.x < s_width-notesize or note.x < notesize:
+                note.dx *= -1
 
         #create black screen
         screen.fill(darkgreen)
 
         #ncreate moving notes
-        # for note in note_list:
-        #     pygame.draw.ellipse(screen, note.color,[note.x, note.y, 25, 25], 0)
-        #     pygame.draw.line(screen, note.color,(note.x+20,note.y+10),(note.x+20,note.y-50),5)
+        for note in note_list:
+            pygame.draw.ellipse(screen, note.color,[note.x, note.y, 35, 35], 0)
+            pygame.draw.line(screen, note.color,(note.x+30,note.y+10),(note.x+30,note.y-50),5)
 
         #creating title
         maketext(screen,input_text,white,medfont,s_width/2,s_height/4)
