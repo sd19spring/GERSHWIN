@@ -1,12 +1,12 @@
 ### Meet the Team
 
 ## Annie Chu
-![](annie.jpg)| width=50)
+![](annie.jpg|width=50)
 
 Annie is a first year at Olin majoring in Electrical and Computer Engineering
 
 ## Joanna Mei
-![](joanna.jpg)
+![](joanna.jpg)width=100)
 
 Joanna is a sophomore at Babson majoring in Business
 
