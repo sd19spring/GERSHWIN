@@ -90,9 +90,7 @@ def make_piano(screen):
 
 def title_desc(screen):
     #creating title
-    title = bigfont.render('G E R S H W I N', True, white)
-    text_rect = title.get_rect(center=(s_width/2, s_height/10))
-    screen.blit(title,text_rect)
+    maketext(screen,'G E R S H W I N',white,bigfont,s_width/2,s_height/10)
 
      #create line
     pygame.draw.line(screen,white, (300, s_height/5), (s_width-300, s_height/5), 2)
@@ -112,20 +110,16 @@ def step2(a,b,screen):
     ran = list(range(300, s_width-300, 212))
 
     for x in range(0,len(g_list)):
-        genre = medfont.render(g_list[x], True, white)
-        genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
-        screen.blit(genre,genre_rect)
+        maketext(screen,g_list[x],white,medfont,ran[x]+75,s_height/1.64)
 
     for i in ran:
         if a>i and a<i+150 and b>(s_height/1.75) and b < (s_height/1.75)+60:
             pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60],0)
             x = int((i-300)/212)
-            genre = medfont.render(g_list[x], True, darkblue)
-            genre_rect = genre.get_rect(center=(ran[x]+75, s_height/1.64))
-            screen.blit(genre,genre_rect)
+            maketext(screen,g_list[x],darkblue,medfont,ran[x]+75,s_height/1.64)
+
         else:
             pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60], 3)
-
     step2 = smallfont.render('S T E P  2 : c h o o s e  a  g e n r e', True, white)
     screen.blit(step2,(300, s_height/1.9))
 
@@ -140,6 +134,13 @@ def step3(a,b,screen):
     s3_rect = step3.get_rect(center=(s_width/2, s_height/1.24))
     screen.blit(step3,s3_rect)
 
+def key():
+    x = ''
+    if input_to_key(input_text) == True:
+        x = 'Major Key'
+    if input_to_key(input_text) == False:
+        x = 'Minor Key'
+    return x
 #-----------------------------------------
 
 def check_quit(events):
@@ -161,9 +162,10 @@ class Note:
         self.y = 0
         self.dx = 0
         self.dy = 0
-r = rd.randrange(0,255)
-g = rd.randrange(0,255)
-b = rd.randrange(0,255)
+rred = rd.randrange(0,255)
+rgreen = rd.randrange(0,255)
+rblue = rd.randrange(0,255)
+rand_color = (rred, rgreen, rblue)
 
 def make_note():
     '''
@@ -174,8 +176,7 @@ def make_note():
     note.y = rd.randrange(notesize, s_height-notesize)
     note.dx = rd.choice([0.5, -0.5])
     note.dy = rd.choice([0.5, -0.5])
-    color = (r, g, b)
-    note.color = color
+    note.color = rand_color
 
     return note
 
@@ -313,10 +314,9 @@ class Output(Scene):
             pygame.draw.line(screen, note.color,(note.x+20,note.y+10),(note.x+20,note.y-50),5)
 
         #creating title
-
-        title = smallfont.render(input_text, True, white)
-        text_rect = title.get_rect(center=(s_width/2, s_height/4))
-        screen.blit(title,text_rect)
+        maketext(screen,input_text,white,bigfont,s_width/2,s_height/4)
+        #key
+        maketext(screen,key(),rand_color,medfont,s_width/2,s_height/2)
 
         (a, b) = pygame.mouse.get_pos()
         if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
@@ -337,9 +337,13 @@ class Output(Scene):
         s4_rect = step4.get_rect(center=(s_width/2, s_height/6.9))
         screen.blit(step4,s4_rect)
 
-        make_piano(screen)
+        #make_piano(screen)
         make_shapes(screen)
 
+def maketext(screen,text, color,font,x,y):
+    txt = font.render(text, True, color)
+    txt_rect = txt.get_rect(center=(x,y))
+    screen.blit(txt, txt_rect)
 
 class Button():
     '''
