@@ -6,6 +6,8 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 ### The Process
 
+![](timeline.jpg)
+
 _Front End_
 
 ![](mock_up.jpg) 
