@@ -1,6 +1,6 @@
 # How to Use
 
-download project [here](https://github.com/sd19spring/final-project-annie-eriel-joanna-madi)
+Download the project [here](https://github.com/sd19spring/final-project-annie-eriel-joanna-madi)!
 
 
 ## Getting Started
@@ -24,13 +24,11 @@ Download MIDI Player Timidity:
 sudo apt-get install timidity
 ```
 
-To use MuseScore with music21, connect musicxmlPath key to application path
-
 ## To Run
 
-In order to run GERSHWIN, make sure all applicable software has been downloaded, then run the follwing file:
+In order to run GERSHWIN, make sure all applicable software has been downloaded, then run the following file in the terminal:
 ```
- framework.py
+python framework.py
 ```
 
 ## Built Using
