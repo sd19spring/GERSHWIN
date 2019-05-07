@@ -1,7 +1,7 @@
 ### Meet the Team
 
 ## Annie Chu
-![](annie.jpg)
+![](annie.jpg =250x250)
 
 Annie is a first year at Olin majoring in Electrical and Computer Engineering
 
