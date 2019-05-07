@@ -1,9 +1,10 @@
 ### Meet the Team
 
-## Annie Chu
-![](annie.jpg){:height='200px' width='200px'}
+## Annie Chu                                  Joanna Mei
+![](annie.jpg){:height='200px' width='200px'} ![](joanna.jpg){:height='200px' width='200px'}
 
-Annie is a first year at Olin majoring in Electrical and Computer Engineering
+Annie is a first year at Olin majoring
+in Electrical and Computer Engineering
 
 ## Joanna Mei
 ![](joanna.jpg)
@@ -19,7 +20,3 @@ Eriel is a first year at Olin majoring in Engineering with a Concentration in Ma
 ![](madi.jpg)
 
 Madi is a sophomore at Olin studying Mechanical Engineering with a self-driven focus in Aerospace Engineering
-
-## Annie Chu                                   | ## Madi Wyatt
-:-------------------ok------------------------:|:--------------------------------------------:
-![](annie.jpg){:height='200px' width='200px'}  |  ![](madi.jpg){:height='200px' width='200px'} 
