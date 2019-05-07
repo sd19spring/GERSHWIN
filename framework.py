@@ -53,13 +53,10 @@ def make_geo(x,y,width,height):
     return points
 
 def draw_geo(x,y,width,height,screen):
-    #pygame.draw.lines(screen,white,False,make_geo(x,y,width,height), 5)
     pygame.draw.ellipse(screen, white,(x, y, height/2, width/2), 5)
     pygame.draw.line(screen, white, [x+120, y+50], [x+120, y-150], 5)
 
 def make_shapes(screen):
-    #draw_geo(50,900,200,250,screen)
-    #draw_geo(s_width-250,900,200,250,screen)
     draw_geo(50,250,200,250,screen)
     draw_geo(s_width-250,250,200,250,screen)
     draw_geo(50,600,200,250,screen)
@@ -102,8 +99,11 @@ def title_desc(screen):
     screen.blit(desc,desc_rect)
 
 def step1(screen, input_box):
+    #initiating input box
     input_box.update()
     input_box.draw(screen)
+
+    #text
     step1 = smallfont.render('S T E P  1 : i n p u t  a  l y r i c', True, white)
     screen.blit(step1,(300,s_height/2.8))
 
@@ -113,6 +113,7 @@ def step2(a,b,screen):
     for x in range(0,len(g_list)):
         maketext(screen,g_list[x],white,medfont,ran[x]+75,s_height/1.64)
 
+    #adding genres
     for i in ran:
         if a>i and a<i+150 and b>(s_height/1.75) and b < (s_height/1.75)+60:
             pygame.draw.rect(screen,white,[i, s_height/1.75, 150, 60],0)
@@ -125,7 +126,6 @@ def step2(a,b,screen):
     screen.blit(step2,(300, s_height/1.9))
 
 def step3(a,b,screen):
-        #step 3
     if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
         pygame.draw.rect(screen,white,[650, s_height/1.3,300,60],0)
         step3 = smallfont.render('G E N E R A T E   M Y   S O N G !', True, darkblue)
@@ -142,12 +142,11 @@ def key():
     if input_to_key(input_text) == False:
         x = 'Minor Key'
     return x
+
 def num_notes():
     number_notes = sc.phrase_syllables(input_text)
     return number_notes
 
-def get_song_notes():
-    print(new_song)
 #-----------------------------------------
 
 def check_quit(events):
@@ -326,13 +325,6 @@ class Output(Scene):
         maketext(screen,key(),white,medfont,2*s_width/3,s_height/2)
         #number of notes
         maketext(screen, str(num_notes())+ ' notes',white, medfont, s_width/3, s_height/2)
-        # #testing note identification
-        # for note in song_list(self.new_song):
-        #     #i = range(400, 1000, 600/len(new_song))
-        #     for i in range(400, 1000, int(600/len(self.new_song))):
-        #         maketext(screen, str(note), white, medfont, int(i), s_height/1.5)
-        #
-            #i = range(400, 1000, 600/len(new_song))
 
         (a, b) = pygame.mouse.get_pos()
         if a > 650 and a < 950 and b > (s_height/1.3) and b < (s_height/1.3)+60:
@@ -353,7 +345,6 @@ class Output(Scene):
         s4_rect = step4.get_rect(center=(s_width/2, s_height/2))
         screen.blit(step4,s4_rect)
 
-        #make_piano(screen)
         make_shapes(screen)
 
 def maketext(screen,text, color,font,x,y):
@@ -426,9 +417,6 @@ class InputBox:
             self.color = grey if self.active else white
         if event.type == pygame.KEYDOWN:
             if self.active:
-                #if event.key == pygame.K_RETURN:
-                #    global input_text
-                #    input_text = self.text
                 if event.key == pygame.K_BACKSPACE:
                     self.text = self.text[:-1]
                 else:
@@ -467,6 +455,7 @@ def main(fps, starting_scene):
     #initializing screen
     screen = pygame.display.set_mode(size)
     pygame.display.set_caption("GERSHWIN")
+
     #looping until close button is clicked
     done = False
 
@@ -508,7 +497,6 @@ def main(fps, starting_scene):
         active_scene.ProcessInput(filtered_events, pressed_keys)
         active_scene.Update()
         active_scene.Render(screen, input_box)
-        # active_scene.Update()
 
         active_scene = active_scene.next
         pygame.display.flip()

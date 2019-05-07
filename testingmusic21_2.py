@@ -371,20 +371,16 @@ def input_to_key(i):
         return True
 
 def generate_song(input, buttons):
-    #i = fw.input_text
     num_syl = sc.phrase_syllables(input)
     key = input_to_key(input)
     new_song = stream.Stream()
     new_song = choices(num_syl,key,new_song,buttons)
-    #new_song.show('midi')
     return new_song
-    #new_song.show()
+
 def play_song(new_song):
     new_song.show('midi')
-    # for note in new_song:
-    #     print(note.name)
+
 def show_song(new_song):
-    #new_song.show('midi')
     new_song.show()
 
 def song_list(new_song):
@@ -392,4 +388,3 @@ def song_list(new_song):
     for note in new_song:
         notes.append(note.name)
     return notes
-#input_def()
