@@ -20,3 +20,9 @@ Eriel is a first year at Olin majoring in Engineering with a Concentration in Ma
 ![](madi.jpg)
 
 Madi is a sophomore at Olin studying Mechanical Engineering with a self-driven focus in Aerospace Engineering
+
+|Annie Chu|Madi Wyatt|Eriel Wiston|Joanna Mei|
+|---	|---	|---	|---	|
+|![](annie.jpg){:height='300px' width='300px'}|![](madi.jpg){:height='300px' width='300px'}|   	|   	|
+|Annie is a first year at Olin|   	|   	|   	|
+|majoring in ECE |    |     |     |
