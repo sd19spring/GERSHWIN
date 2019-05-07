@@ -1,7 +1,7 @@
 ### Meet the Team
 
-## Annie Chu                                  Joanna Mei
-![](annie.jpg){:height='200px' width='200px'} ![](joanna.jpg){:height='200px' width='200px'}
+## Annie Chu                                  | Joanna Mei
+![](annie.jpg){:height='300px' width='300px'} | ![](joanna.jpg){:height='300px' width='300px'}
 
 Annie is a first year at Olin majoring
 
