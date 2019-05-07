@@ -4,6 +4,7 @@
 ![](annie.jpg){:height='200px' width='200px'} ![](joanna.jpg){:height='200px' width='200px'}
 
 Annie is a first year at Olin majoring
+
 in Electrical and Computer Engineering
 
 ## Joanna Mei
