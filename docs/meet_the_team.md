@@ -1,7 +1,7 @@
 ### Meet the Team
 
-## Annie Chu                                  | Joanna Mei
-![](annie.jpg){:height='300px' width='300px'} | ![](joanna.jpg){:height='300px' width='300px'}
+## Annie Chu                                  
+![](annie.jpg){:height='300px' width='300px'}
 
 Annie is a first year at Olin majoring
 in Electrical and Computer Engineering
@@ -21,11 +21,12 @@ Eriel is a first year at Olin majoring in Engineering with a Concentration in Ma
 
 Madi is a sophomore at Olin studying Mechanical Engineering with a self-driven focus in Aerospace Engineering
 
-|## Annie Chu|## Madi Wyatt|
+|Annie Chu|Madi Wyatt|
 |---	|---	|
-|![](annie.jpg){:height='300px' width='300px'}|![](madi.jpg){:height='300px' width='300px'}|
-|Annie is a first year at Olin majoring in Electrical and Computer Engineering| Madi is a sophomore at Olin studying Mechanical Engineering with a self-driven focus in Aerospace Engineering|
-|## Eriel Wiston |## Joanna Mei|
+|![](annie.jpg){:height='400px' width='400px'}|![](madi.jpg){:height='400px' width='400px'}|
+|Annie is a first-year student at Olin College majoring in Electrical & Computer Engineering with a concentration in Visual Design| Madi is a sophomore at Olin studying Mechanical Engineering with a self-driven focus in Aerospace Engineering|
+
+|Eriel Wiston |Joanna Mei|
 |---	|---	|
 |![](eriel.jpg){:height='300px' width='300px'}|![](joanna.jpg){:height='300px' width='300px'}|
 | Joanna is a sophomore at Babson majoring in Business | Eriel is a first year at Olin majoring in Engineering with a Concentration in Mathematics |
