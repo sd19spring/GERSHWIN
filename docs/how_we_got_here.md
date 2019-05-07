@@ -1,6 +1,6 @@
 ## How We Got Here
 
-It all started with a whiteboard, post-its, and some sharpies. We started ideating what features we would want in a music generator, and ended up with the following concept: 
+It all started with a whiteboard, post-its, and some sharpies. We started ideating what features we would want in a music generator, and ended up with the following concept:
 
 ![](concept_map.jpg)
 
@@ -12,10 +12,10 @@ It all started with a whiteboard, post-its, and some sharpies. We started ideati
 
 _Successes_
 
-* We were able to generate music that matches a given genre fairly well
-* minamilstic, appealing aethetic 
+* We were able to generate music that matches a given genre
+* minimalistic, appealing aesthetic
 
 _Failures_
 
-* Integration within one output area 
+* Integration within one output area
 * Can't match notes to syllable breakdown
